@@ -1,5 +1,5 @@
-file,ghost/master/descript.txtb06a518676587ca2086d6e05e4fe2badsize=579
-file,ghost/master/dic_Event.txt607d31983a4446ad4dd0a9feab5726f6size=4824
+file,ghost/master/descript.txt5d3bfbaac1ed738c4589a7803b2fe079size=655
+file,ghost/master/dic_Event.txt6a5c54a283a5314e6abeb171480def4bsize=3785
 file,ghost/master/dic_Menu.txte574bdbd31face6e7490881f9a24fa2dsize=4288
 file,ghost/master/dic_Mouse.txta332572c7c5c8940ed671d59b59dfa74size=2999
 file,ghost/master/dic_StartEnd.txt9a080f531bbbbb604ba4dc9b1d38b87fsize=628
@@ -11,7 +11,7 @@ file,ghost/master/saori/ssu.dllba1580bd6f77da3cefb68ccd79b6fb49size=89088
 file,ghost/master/satori.dll60dac9edce169e679230a9a3a27d6e9fsize=194048
 file,ghost/master/satori_conf.txt0b62ac55c1d3fdab41af1925f76ac96csize=1348
 file,ghost/master/satori_license.txt078ffc36f3374648bf523ae197f4765csize=944
-file,ghost/master/satori_savebackup.txt94fdbaf067b90f16990b5151b674a58esize=584
+file,ghost/master/satori_savebackup.txt0e7b44169b267d1e6c178780c412eafasize=584
 file,install.txtd7aabe273559e21a0f433d372f3803e6size=86
 file,readme.txtb5bcc67dfe1f8aa227ac082d22909894size=60
 file,shell/master/descript.txt0a861c0bc2f4f659d6d9e92e1dcc14b7size=1267
