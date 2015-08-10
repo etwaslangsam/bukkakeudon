@@ -3,8 +3,7 @@
 https://raw.githubusercontent.com/etwaslangsam/bukkakeudon/master/
 
 ＊sakura.recommendsites
-配布サイト
-http://ghosthacking.webcrow.jp/index.html
+-
 
 ＊sakura.portalsites
 ゴーストの使い方 - SSP
