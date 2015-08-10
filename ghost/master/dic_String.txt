@@ -1,7 +1,4 @@
 
-—homeurl
-https://raw.githubusercontent.com/etwaslangsam/bukkakeudon/master/
-
 –sakura.recommendsites
 -
 
