@@ -8,7 +8,7 @@
 
 ＊OnBoot
 ：\![bind,液,,0]\![bind,上,キャミ,1]\![bind,下,,1]\![bind,下着,,1]
-\c\s[7]なによ、また来たの？\w5\w5
+\c\s[7]なによ、また来たの？\w9\w6
 （when，（起動更新）==1，\![updatebymyself,checkonly]）
 
 ＊OnClose
