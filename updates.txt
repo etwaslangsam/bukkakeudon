@@ -1,5 +1,5 @@
 file,delete.txtd39ca22f1985944afc43551da5c43262size=19
-file,developer_options.txtabadbbff49cc97d114b4cf789c07dfeesize=49
+file,developer_options.txtd1a96f240563fa192216137290f47473size=78
 file,install.txtd7aabe273559e21a0f433d372f3803e6size=86
 file,readme.txt22c9b345e62266641ac7a60d9f472080size=304
 file,thumbnail.pngaf9d559d941689dc65dcc85f37891d58size=12446
@@ -16,7 +16,7 @@ file,ghost/master/replace_after.txt4e18d4fcde00cfbb585f5e245051036esize=79
 file,ghost/master/satori.dllc28bb2ccd1f7c72a452773927f388db8size=205824
 file,ghost/master/satori_conf.txt0b62ac55c1d3fdab41af1925f76ac96csize=1348
 file,ghost/master/satori_license.txt078ffc36f3374648bf523ae197f4765csize=944
-file,ghost/master/ssp_shiori_log.txt411eace7fe8abe2beba147c8dd88d0a1size=10498858
+file,ghost/master/ssp_shiori_log.txtf19e80345cb1da18cb4230065be345f7size=10581311
 file,shell/darkelf/descript.txt280171e025fd79e373d0d3920f892922size=1241
 file,shell/darkelf/install.txt33fcd8b5302248f82cb95ed1e51ae2bbsize=90
 file,shell/darkelf/readme.txt7ddc64bed9cce789579722758a3f1b5fsize=28

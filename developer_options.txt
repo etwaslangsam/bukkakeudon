@@ -1,2 +1,3 @@
 .git/,nonar,noupdate
 .gitignore,nonar,noupdate
+/shell/darkelf,nonar,noupdate
