@@ -2,14 +2,15 @@
 ＊OnSatoriLoad
 ＄文「＊」の重複回避	有効、起動中
 ＄単語群「＊」の重複回避	有効、起動中
+＄自動挿入ウェイトタイプ	一般
 
 ＊OnFirstBoot
 ：\s[7]なによ、また来たの？
 
 ＊OnBoot
+＄起動更新	
 ：\![bind,液,,0]\![bind,上,キャミ,1]\![bind,下,,1]\![bind,下着,,1]
 \c\s[7]なによ、また来たの？\w9\w6
-（when，（起動更新）==1，\![updatebymyself,checkonly]）
 
 ＊OnClose
 ＄キャミ脱いだ	0

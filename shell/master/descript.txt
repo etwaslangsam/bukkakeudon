@@ -7,6 +7,18 @@ name,<censored>エルフ
 homeurl,http://kuragegondora.pa.land.to
 seriko.use_self_alpha,1
 
+menu.background.bitmap.filename,back.png
+menu.foreground.bitmap.filename,back.png
+menu.background.alignment,centerbottom
+menu.foreground.alignment,centerbottom
+
+menu.background.font.color.r,0
+menu.background.font.color.g,0
+menu.background.font.color.b,0
+menu.foreground.font.color.r,0
+menu.foreground.font.color.g,0
+menu.foreground.font.color.b,255
+
 sakura.bindgroup00001.name,後髪,ツインテ
 sakura.bindgroup00003.name,後髪,セミショート
 
