@@ -1,0 +1,5 @@
+charset,Shift_JIS
+name,‚Ô‚Á‚©‚¯‚¤‚Ç‚ñ
+type,ghost
+directory,bukkakeudon
+refresh,0

@@ -1,0 +1,31 @@
+charset,Shift_JIS
+name,ぶっかけうどん
+type,ghost
+craftman,etwaslangsam
+craftmanw,牧野シンジ
+craftmanurl,http://ghosthacking.x.fc2.com/index.html
+homeurl,https://raw.githubusercontent.com/etwaslangsam/bukkakeudon/master/
+readme,readme.txt
+sakura.name,エルフな彼女
+sakura.seriko.defaultsurface,0
+kero.seriko.defaultsurface,10
+balloon.defaultsurface,0
+seriko.alignmenttodesktop,bottom
+sakura.seriko.alignmenttodesktop,bottom
+kero.seriko.alignmenttodesktop,bottom
+sstp.allowunspecifiedsend,1
+sstp.allowcommunicate,1
+sstp.alwaystranslate,0
+name.allowoverrid,1
+shiori.cache,1
+shiori.encoding,0
+don't need onmousemove,0
+don't need bind,0
+don't need seriko talk,0
+balloon.dontmove,False
+icon,udon.ico
+shiori,satori.dll
+
+
+
+
