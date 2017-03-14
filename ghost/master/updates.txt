@@ -10,8 +10,13 @@ file,ghost/master/dic_Menu.txt30fb0531392a97808c523e2f3793c5a8size=3973
 file,ghost/master/dic_Mouse.txt62bc4b7f062711e1b383821804af04d2size=4880
 file,ghost/master/dic_StartEnd.txtca14e440a73a0cdabdb2b8af4d1a50fdsize=1967
 file,ghost/master/dic_String.txt6919d7ac59c7a073ee730821989fdd90size=843
+<<<<<<< HEAD
 file,ghost/master/dic_Talk.txt87108e586c4a9d1433f40f34ac78654fsize=1216
 file,ghost/master/dic_Time.txt5b3a4c195bfe1d79dae1e8354c3ee904size=3016
+=======
+file,ghost/master/dic_Talk.txt0f8248b7e9b56c5dbf4532ef652cd9ccsize=1216
+file,ghost/master/dic_Time.txt7e39eaee77785fd8c23dd7043cb7eebfsize=1810
+>>>>>>> eca9b218026079c22904da67fc58c8291e0d64ab
 file,ghost/master/replace.txtff3a6ae4efd23391089712565dd9e36csize=199
 file,ghost/master/replace_after.txt4e18d4fcde00cfbb585f5e245051036esize=79
 file,ghost/master/satori.dllc28bb2ccd1f7c72a452773927f388db8size=205824
@@ -63,7 +68,10 @@ file,shell/master/surface04030.png32db8e965229acda5ac758421a82684fsize=10113
 file,shell/master/surface04035.png6503a7c0980b26dcd4dfdda44f8e5dadsize=6168
 file,shell/master/surface04040.pnga598209bc9982448176151ebeda71b62size=5434
 file,shell/master/surface09200.png33e65593be2c2a51503118a1d1cf045asize=5594
+<<<<<<< HEAD
 file,shell/master/surface10.apng229c17afa2e665e72e8ca8ef327870ecsize=19473
+=======
+>>>>>>> eca9b218026079c22904da67fc58c8291e0d64ab
 file,shell/master/surface10.pngb8a645ba4a77d8b00eefc1ab14adef8csize=937
 file,shell/master/surface10000.png4461250c4465c4c566bbfeba63817828size=27115
 file,shell/master/surface10010.pngc299a22f31a707276f41cac1c95a6ecdsize=17557
