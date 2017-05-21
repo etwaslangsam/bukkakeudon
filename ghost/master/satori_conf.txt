@@ -13,6 +13,7 @@
 ＄トーク中のなでられ反応	無効
 ＄顔射済み	0
 ＄全部脱いだ	0
+＄彼女の名前	エルフな彼女
 ＠SAORI
 calc,saori/ssu.dll,calc
 calc_float,saori/ssu.dll,calc_float

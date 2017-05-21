@@ -1,10 +1,12 @@
 オーナードローメニュー
 
-＊sakura.recommendsites
-追加シェル-ダークエルフ
-http://iom.flavors.me
+＃＊sakura.recommendsites
+＃追加シェル-ダークエルフ
+＃http://iom.flavors.me
 
-：データ置き場　→　絵板にあるわよ。
+＊sakura.recommendsites
+作者に連絡
+script:\![open,inputbox,拍手送信内容,-1,いいね！,--limit=1000]
 
 ＊sakura.portalsites
 ゴーストの使い方 - SSP
