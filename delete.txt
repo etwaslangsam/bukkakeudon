@@ -1,3 +1,5 @@
+.git\
 .gitignore
-.git/
 thumbnail.png
+ghost\master\dic_Menu.txt
+ghost\master\dic_Time.txt

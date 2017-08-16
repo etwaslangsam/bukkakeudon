@@ -5,8 +5,14 @@
 ＃http://iom.flavors.me
 
 ＊sakura.recommendsites
-作者に連絡
+配布サイト
+https://sites.google.com/site/p5zxftwc/
+
+
+＊sakura.recommendsites
+バグ報告など
 script:\![open,inputbox,拍手送信内容,-1,いいね！,--limit=1000]
+
 
 ＊sakura.portalsites
 ゴーストの使い方 - SSP
