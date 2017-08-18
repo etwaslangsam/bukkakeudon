@@ -150,9 +150,9 @@
 \0（OnSurfaceRestore）\_q\_l[,@3]\![*]\q[ぶっかけさせて,ぶっかけさせて]\_l[,@3]
 \![*]\q[着せ替え,dressup]\_l[,@3]
 \![*]\q[話しかける,Communication]\_l[,@3]
-\![*]\q[喋り頻度設定,talkInterval]\_l[,@3]
+\![*]\q[喋り頻度設定,talkInterval]\_l[@34,](現在:（喋り間隔）)\_l[,@3]
 \![*]\q[名前はなんだっけ,nameentry]\_l[@10,](名前:（彼女の名前）)\_l[,@3]
-\![*]\q[名前を教える,usernameentry]\n
+\![*]\q[名前を教える,usernameentry]\_l[@34,](名前:（ユーザ名）)\n
 \q[なんでもない,Cancel]\_q
 
 ＊Cancel
