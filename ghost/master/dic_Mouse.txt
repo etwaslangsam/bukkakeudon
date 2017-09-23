@@ -1,15 +1,15 @@
 マウス反応
 
 ＊OnMouseDoubleClick
-＞（Ｒ３）（Ｒ４）つつかれ	（Ｒ５）＝＝0
+＞（Reference3）（Reference4）つつかれ	（Reference5）==0
 
 ＊OnMouseWheel
-＞（Ｒ３）（Ｒ４）ころころ上方向	（Ｒ２）＞０
-＞（Ｒ３）（Ｒ４）ころころ下方向	（Ｒ２）＜０
-＞（Ｒ３）（Ｒ４）ころころ
+＞（Reference3）（Reference4）ころころ上方向	（Reference2）＞0
+＞（Reference3）（Reference4）ころころ下方向	（Reference2）＜0
+＞（Reference3）（Reference4）ころころ
 
 ＊OnMouseClickEx
-＞（Ｒ３）（Ｒ４）ころクリ	（Ｒ５）＝＝middle
+＞（Reference3）（Reference4）ころクリ	（Reference5）＝＝middle
 
 ＃─────────────────────
 ＃頭

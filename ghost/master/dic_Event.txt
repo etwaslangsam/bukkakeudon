@@ -172,10 +172,11 @@
 
 ＊rが押された
 ＄辞書リロード	実行
-\0リロードしたわ\e
+\0\s[0]リロードしたわ。\e
 
 ＊sが押された
-\0ランダムトークφ：（countNoNameTalk）個\e
+\0\s[0]（現在年）年（現在月）月（現在日）日φ（（現在曜日）φ）\n
+ランダムトークφ：（countNoNameTalk）個\e
 
 ＃─────────────────────
 ＃選択肢
@@ -190,24 +191,24 @@
 ＃─────────────────────
 ＃バグ報告
 ＃─────────────────────
-＊OnWebClap
-：\![open,inputbox,拍手送信内容,-1,いいね！,--limit=1000]
-
-＊拍手送信内容を教えてもらった
-\![execute,http-post,http://clap.webclap.com/clap.php?id=etwaslangsam,--param=message_body="エルフ＠（拍手送信内容）",--async=webclap]
-＄拍手送信内容	
-
-＊拍手送信内容を空打ちされた
-：（３０）やめちゃうの？
-
-＊拍手送信完了
-：\s[5]ん。\w5送ったわよ。
-
-＊拍手送信失敗
-：\s[4]「（R4）」？\w3で失敗らしいわよ。
-
-＊OnExecuteHTTPComplete
-＞拍手送信完了	（R1）==webclap
-
-＊OnExecuteHTTPFailure
-＞拍手送信失敗	（R1）==webclap
+＃＊OnWebClap
+＃：\![open,inputbox,拍手送信内容,-1,いいね！,--limit=1000]
+＃
+＃＊拍手送信内容を教えてもらった
+＃\![execute,http-post,http://clap.webclap.com/clap.php?id=etwaslangsam,--param=message_body="エルフ＠（拍手送信内容）",--async=webclap]
+＃＄拍手送信内容	
+＃
+＃＊拍手送信内容を空打ちされた
+＃：（３０）やめちゃうの？
+＃
+＃＊拍手送信完了
+＃：\s[5]ん。\w5送ったわよ。
+＃
+＃＊拍手送信失敗
+＃：\s[4]「（R4）」？\w3で失敗らしいわよ。
+＃
+＃＊OnExecuteHTTPComplete
+＃＞拍手送信完了	（R1）==webclap
+＃
+＃＊OnExecuteHTTPFailure
+＃＞拍手送信失敗	（R1）==webclap
