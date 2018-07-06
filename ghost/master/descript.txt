@@ -3,7 +3,7 @@ name,ぶっかけうどん
 type,ghost
 craftman,etwaslangsam
 craftmanw,牧野シンジ
-craftmanurl,https://sites.google.com/site/p5zxftwc/
+craftmanurl,https://hotpepar.blogspot.jp
 homeurl,https://raw.githubusercontent.com/etwaslangsam/bukkakeudon/master/
 readme,readme.txt
 sakura.name,エルフな彼女
