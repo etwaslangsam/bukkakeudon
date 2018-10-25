@@ -1,6 +1,12 @@
 システムイベント
 
 ＃────────
+＃最小化解除
+＃────────
+＊OnWindowStateRestore
+\0\s[22]もぉ～、急になによぉ……。
+
+＃────────
 ＃表情初期化
 ＃────────
 ＊OnSurfaceRestore
@@ -22,125 +28,126 @@
 ＃シェル変更
 ＃────────
 ＊OnShellChanging
-：\s[5]ちょっと目を瞑っててくれる？\w9\w6
-\s[2]え？\w9\s[20]どうせなら生着替えしてくれって？\w9\w6\s[28]バカ！\w6\w9
+\0\s[5]ちょっと目を瞑っててくれる？\_w[1000]
+\c\s[2]え？\w5
+\s[20]どうせなら生着替えしてくれって？\w6 \s[28]バカ！\w5
 
-＊OnShellChanged
-＞ダークエルフに着替え	（ダークエルフ判定）
-＞エルフに着替え	（マスター判定）
 
-＠マスター判定
-（compare,（R0）,<censored>エルフ）
-
-＠ダークエルフ判定
-（compare,（R0）,ダークエルフ）
-
-＊ダークエルフに着替え
+＊OnShellChanged	（compare,（Reference0）,ダークエルフ）==1
 ＄現在シェル	ダークエルフ
-：\s[57]ふふん、\w3こんだけ大きければ文句ないでしょ？
+\0\s[57]ふふん、\w3こんだけ大きければ文句ないでしょ？
 
-＊エルフに着替え
+＊OnShellChanged	（compare,（Reference0）,<censored>エルフ）==1
 ＄現在シェル	
-：\s[32]どう？\w5マンネリ解消になったかしら？
+\0\s[32]どう？\w5
+マンネリ解消になったかしら？
 
 ＃────────
 ＃時計合わせ
 ＃────────
 ＊OnSNTPBegin
-：\s[3]時計合わせ？\w6
+\0\s[3]時計合わせ？\w6
 \s[4]それくらい自分でやりなさいよ、もー。
 
-＊OnSNTPCompare
-：\6
+＊OnSNTPCompare	（Reference3）!=0
+\6
+
+＊OnSNTPCompare	（Reference3）==0
+\0\s[4]って、なによ。
+別におかしくなんてないじゃない。
 
 ＊OnSNTPCorrect
-：\s[31]はい、合わせておいたわよ。
+\0\s[31]はい、合わせておいたわよ。
 
 ＊OnSNTPFailure
-：\s[22]ってあれ？\w6
-失敗……繋がらない？
+\0\s[22]ってあれ？\w6
+失敗したみたい……繋がらない？
 
 ＃────────
 ＃インストール
 ＃────────
 ＊OnInstallBegin
-：\s[0]インストールするね。
+\0\s[0]インストールね。\w5
+任せておきなさい。
 
-＊OnInstallComplete
-：\s[0]（replace（バイト値,１）（Reference1）（バイト値,１）\（バイト値,１）\\）をインストールしたわ。\w6
-（when,（Reference0）==ghost,\s[24]ってなに？\w6　浮気？）
+＊OnInstallComplete	（Reference0）!=ghost
+\0\s[0]『（replace（バイト値,１）（Reference1）（バイト値,１）\（バイト値,１）\\）』をインストールしたわ。\w5
+（Reference0）ね。
+
+＊OnInstallComplete	（Reference0）==ghost
+\0\s[0]『（replace（バイト値,１）（Reference1）（バイト値,１）\（バイト値,１）\\）』をインストールしたわ。\w5
+\s[24]って誰よコレ？\w3 浮気？
 
 ＊OnInstallFailure
-：\s[9]失敗したみたい。
+\0\s[9]インストールに失敗したみたい。\w5
+原因は『（Reference0）』だって。
 
 ＊OnInstallRefuse
-：\s[7]これ、「（replace（バイト値,１）（Reference0）（バイト値,１）\（バイト値,１）\\）」さんのじゃない。
-本人に渡してあげなさいよ。
+\0\s[7]これ、『（replace（バイト値,１）（Reference0）（バイト値,１）\（バイト値,１）\\）』さんのじゃない。
+ちゃんと本人に渡してなさいよね。
 
 ＃────────
 ＃ダウンロード
 ＃────────
 ＊OnURLDropping
-：\s[0]ダウンロードね。
+\0\s[0]ダウンロードね。
 
 ＊OnURLDropped
-：\s[31]ダウンロードが終わり。\w6
-『\_q（Reference0）\_q』に置いといたわ。
+\0\s[31]ダウンロード終わり。
+\_q（Reference0）\_qに置いといたわ。
 
 ＊OnURLDropFailure
-：\s[3]ダウンロードに失敗……。
+\0\s[3]ダウンロードに失敗したわ。
 
 ＃────────
 ＃ネットワーク更新
 ＃────────
 ＊OnUpdateBegin
-：\s[0]更新情報を取得するよ。
+\0\s[0]更新情報を取得するわ。
 
-＊OnUpdateReady
-：\s[5]（Reference0）個のファイルが更新されてるみたいね。
+＊OnUpdateReady	（Reference0）<5
+\0\s[5]（Reference0）個のファイルが更新されるみたい。
 
-＊OnUpdateComplete
-＞ネットワーク更新（Reference0）
-：\s[31]成功したってさ。
+＊OnUpdateReady	（Reference0）>5
+\0\s[5]（Reference0）個のファイルが更新されるみたい。\w5
+\s[9]結構あるわね。
 
-＊OnUpdateFailure
-＞ネットワーク更新（Reference0）
-：\s[4]ネットワーク更新に失敗したみたい。
+＊OnUpdateComplete	（Reference0）==none
+\0\s[36]残念。
+とくに更新されてないみたいね。
 
-＊ネットワーク更新none
-：\s[36]とくに更新されてないみたいね。
+＊OnUpdateComplete	（Reference0）==changed
+\0\s[5]ネットワーク更新、無事終了したわよ。
 
-＊ネットワーク更新changed
-：\s[5]ネットワーク更新、無事終了したわよ。
-
-＊ネットワーク更新timeout
-：\s[36]時間切れ。\w6
+＊OnUpdateFailure	（Reference0）==timeout
+\0\s[36]時間切れ。\w6
 重すぎてファイルが落ちてこないみたい。
 
-＊ネットワーク更新md5 miss
-：\s[4]データが一致しなかったわ。
+＊OnUpdateFailure	（Reference0）==md5 miss
+\0\s[4]データが一致しなかったわ。
 回線状態が悪いのか、updates2.dauがおかしいのかも。
 
-＊ネットワーク更新404
-：\s[9]更新用ファイルが見つからなかったわ。
+＊OnUpdateFailure	（Reference0）==404
+\0\s[9]更新用ファイルが見つからなかったわ。
 
-＊ネットワーク更新artificial
-\e
+＊OnUpdateFailure	（Reference0）==artificial
+\0\s[30]中断するわよ？
 
 ＃────────
 ＃ファイル作成
 ＃────────
 ＊OnUpdatedataCreating
-：\s[0]更新ファイルを作っておくわね。
+\0\s[0]更新ファイルを作っておくわね。
 
 ＊OnUpdatedataCreated
-：\s[5]ん、完成！
+\0\s[5]ん、完成！\w5
+更新するのね。偉いじゃない！
 
 ＊OnNarCreating
-：\s[0]narに梱包しておくね。
+\0\s[0]narに梱包しておくわ。
 
 ＊OnNarCreated
-：\s[5]はいお終い！
+\0\s[5]はいお終い！
 
 ＃────────
 ＃文字入力
@@ -157,26 +164,28 @@
 ＃────────
 ＃キー押下
 ＃────────
-＊OnKeyPress
-＞（Reference0）が押された
 
-＊zが押された
-：\![bind,上,キャミ,1]\![bind,下,,1]\![bind,下着,,1]\![bind,液,,0]
-（set,キャミ脱いだ,0）（set,ズボン脱いだ,0）（set,全部脱いだ,0）（set,顔射済み,0）
+＃＊OnKeyPress	（Reference0）==z
+＃\0\![bind,上,キャミ,1]\![bind,下,,1]\![bind,下着,,1]\![bind,液,,0]
+＃（set,キャミ脱いだ,0）（set,ズボン脱いだ,0）（set,全部脱いだ,0）（set,顔射済み,0）
 
-＊mが押された
+＊OnKeyPress	（Reference0）==t
+＄re_talk	（）
+（re_talk）
+
+＊OnKeyPress	（Reference0）==m
 ＞メニュー
 
-＊cが押された
+＊OnKeyPress	（Reference0）==c
 ＞Communication
 
-＊rが押された
+＊OnKeyPress	（Reference0）==r
 ＄辞書リロード	実行
 \0\s[0]リロードしたわ。\e
 
-＊sが押された
+＊OnKeyPress	（Reference0）==s
 \0\s[0]（現在年）年（現在月）月（現在日）日φ（（現在曜日）φ）\n
-ランダムトークφ：（countNoNameTalk）個\e
+ランダムトークφ\0（countNoNameTalk）個\e
 
 ＃────────
 ＃選択肢
@@ -185,30 +194,40 @@
 ＄選択ラベル	（Reference0）
 ＄選択ID	（Reference1）
 ＞（Reference1）
-：\s[3]選択肢『（Reference1）』は存在しないわ。\w6
+\0\s[3]『（Reference0）』が見つからないみたい。
 作者に報告してみて。
+
+＃────────
+＃マウスイベント
+＃────────
+＊OnMouseDoubleClick
+＞（Reference3）（Reference4）つつかれ	（Reference5）==0
+
+＊OnMouseWheel
+＞（Reference3）（Reference4）ころころ上	（Reference2）＞0
+＞（Reference3）（Reference4）ころころ下	（Reference2）＜0
+＞（Reference3）（Reference4）ころころ
+
+＊OnMouseClickEx
+＞（Reference3）（Reference4）ころクリ	（Reference5）＝＝middle
 
 ＃────────
 ＃バグ報告
 ＃────────
 ＊OnWebClap
-：\![open,inputbox,拍手送信内容,-1,いいね！,--limit=1000]
+\0\![open,inputbox,拍手送信内容,-1,いいね！,--limit=1000]
 
 ＊拍手送信内容を教えてもらった
 \![execute,http-post,http://clap.webclap.com/clap.php?id=etwaslangsam,--param=message_body="エルフ＠（拍手送信内容）",--async=webclap]
 ＄拍手送信内容	
 
 ＊拍手送信内容を空打ちされた
-：（３０）やめちゃうの？
+\0\s[30]やめちゃうの？
 
-＊拍手送信完了
-：\s[5]ん。\w5送ったわよ。
+＊OnExecuteHTTPComplete	（Reference1）==webclap
+\0\s[5]送ったわ。ありがとね。\w5
+アンタもたまにはいいトコ見せてくるのね。
 
-＊拍手送信失敗
-：\s[4]「（R4）」？\w3で失敗らしいわよ。
+＊OnExecuteHTTPFailure	（Reference1）==webclap
+\0\s[4]「（Reference4）」？\w3 が原因で失敗よ。
 
-＊OnExecuteHTTPComplete
-＞拍手送信完了	（R1）==webclap
-
-＊OnExecuteHTTPFailure
-＞拍手送信失敗	（R1）==webclap
