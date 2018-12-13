@@ -1,204 +1,6 @@
-システムイベント
 
 ＃────────
-＃最小化解除
-＃────────
-＊OnWindowStateRestore
-\0\s[22]もぉ～、急になによぉ……。
-
-＃────────
-＃表情初期化
-＃────────
-＊OnSurfaceRestore
-＞怒り	（顔射済み）>0
-＞恥じらい２	（全部脱いだ）==1
-＞恥じらい	（キャミ脱いだ）==1||（ズボン脱いだ）==1
-\0\s[0]
-
-＊恥じらい
-\0\s[1]
-
-＊恥じらい２
-\0\s[58]
-
-＊怒り
-\0\s[7]
-
-＃────────
-＃シェル変更
-＃────────
-＊OnShellChanging
-\0\s[5]ちょっと目を瞑っててくれる？\_w[1000]
-\c\s[2]え？\w5
-\s[20]どうせなら生着替えしてくれって？\w6 \s[28]バカ！\w5
-
-
-＊OnShellChanged	（compare,（Reference0）,ダークエルフ）==1
-＄現在シェル	ダークエルフ
-\0\s[57]ふふん、\w3こんだけ大きければ文句ないでしょ？
-
-＊OnShellChanged	（compare,（Reference0）,<censored>エルフ）==1
-＄現在シェル	
-\0\s[32]どう？\w5
-マンネリ解消になったかしら？
-
-＃────────
-＃時計合わせ
-＃────────
-＊OnSNTPBegin
-\0\s[3]時計合わせ？\w6
-\s[4]それくらい自分でやりなさいよ、もー。
-
-＊OnSNTPCompare	（Reference3）!=0
-\6
-
-＊OnSNTPCompare	（Reference3）==0
-\0\s[4]って、なによ。
-別におかしくなんてないじゃない。
-
-＊OnSNTPCorrect
-\0\s[31]はい、合わせておいたわよ。
-
-＊OnSNTPFailure
-\0\s[22]ってあれ？\w6
-失敗したみたい……繋がらない？
-
-＃────────
-＃インストール
-＃────────
-＊OnInstallBegin
-\0\s[0]インストールね。\w5
-任せておきなさい。
-
-＊OnInstallComplete	（Reference0）!=ghost
-\0\s[0]『（replace（バイト値,１）（Reference1）（バイト値,１）\（バイト値,１）\\）』をインストールしたわ。\w5
-（Reference0）ね。
-
-＊OnInstallComplete	（Reference0）==ghost
-\0\s[0]『（replace（バイト値,１）（Reference1）（バイト値,１）\（バイト値,１）\\）』をインストールしたわ。\w5
-\s[24]って誰よコレ？\w3 浮気？
-
-＊OnInstallFailure
-\0\s[9]インストールに失敗したみたい。\w5
-原因は『（Reference0）』だって。
-
-＊OnInstallRefuse
-\0\s[7]これ、『（replace（バイト値,１）（Reference0）（バイト値,１）\（バイト値,１）\\）』さんのじゃない。
-ちゃんと本人に渡してなさいよね。
-
-＃────────
-＃ダウンロード
-＃────────
-＊OnURLDropping
-\0\s[0]ダウンロードね。
-
-＊OnURLDropped
-\0\s[31]ダウンロード終わり。
-\_q（Reference0）\_qに置いといたわ。
-
-＊OnURLDropFailure
-\0\s[3]ダウンロードに失敗したわ。
-
-＃────────
-＃ネットワーク更新
-＃────────
-＊OnUpdateBegin
-\0\s[0]更新情報を取得するわ。
-
-＊OnUpdateReady	（Reference0）<5
-\0\s[5]（Reference0）個のファイルが更新されるみたい。
-
-＊OnUpdateReady	（Reference0）>5
-\0\s[5]（Reference0）個のファイルが更新されるみたい。\w5
-\s[9]結構あるわね。
-
-＊OnUpdateComplete	（Reference0）==none
-\0\s[36]残念。
-とくに更新されてないみたいね。
-
-＊OnUpdateComplete	（Reference0）==changed
-\0\s[5]ネットワーク更新、無事終了したわよ。
-
-＊OnUpdateFailure	（Reference0）==timeout
-\0\s[36]時間切れ。\w6
-重すぎてファイルが落ちてこないみたい。
-
-＊OnUpdateFailure	（Reference0）==md5 miss
-\0\s[4]データが一致しなかったわ。
-回線状態が悪いのか、updates2.dauがおかしいのかも。
-
-＊OnUpdateFailure	（Reference0）==404
-\0\s[9]更新用ファイルが見つからなかったわ。
-
-＊OnUpdateFailure	（Reference0）==artificial
-\0\s[30]中断するわよ？
-
-＃────────
-＃ファイル作成
-＃────────
-＊OnUpdatedataCreating
-\0\s[0]更新ファイルを作っておくわね。
-
-＊OnUpdatedataCreated
-\0\s[5]ん、完成！\w5
-更新するのね。偉いじゃない！
-
-＊OnNarCreating
-\0\s[0]narに梱包しておくわ。
-
-＊OnNarCreated
-\0\s[5]はいお終い！
-
-＃────────
-＃文字入力
-＃────────
-＊OnUserInput
-＞（Reference0）をタイムアウト	（compare（バイト値,１）（Reference1）（バイト値,１）timeout）
-＞（Reference0）を空打ちされた	（is_empty（バイト値,１）（Reference1））
-＄（Reference0）	（Reference1）
-＞（Reference0）を教えてもらった
-
-＊OnUserInputCancel
-＞（Reference0）を空打ちされた	（compare,（Reference1）,close）
-
-＃────────
-＃キー押下
-＃────────
-
-＃＊OnKeyPress	（Reference0）==z
-＃\0\![bind,上,キャミ,1]\![bind,下,,1]\![bind,下着,,1]\![bind,液,,0]
-＃（set,キャミ脱いだ,0）（set,ズボン脱いだ,0）（set,全部脱いだ,0）（set,顔射済み,0）
-
-＊OnKeyPress	（Reference0）==t
-＄re_talk	（）
-（re_talk）
-
-＊OnKeyPress	（Reference0）==m
-＞メニュー
-
-＊OnKeyPress	（Reference0）==c
-＞Communication
-
-＊OnKeyPress	（Reference0）==r
-＄辞書リロード	実行
-\0\s[0]リロードしたわ。\e
-
-＊OnKeyPress	（Reference0）==s
-\0\s[0]（現在年）年（現在月）月（現在日）日φ（（現在曜日）φ）\n
-ランダムトークφ\0（countNoNameTalk）個\e
-
-＃────────
-＃選択肢
-＃────────
-＊OnAnchorSelectEx
-＄選択ラベル	（Reference0）
-＄選択ID	（Reference1）
-＞（Reference1）
-\0\s[3]『（Reference0）』が見つからないみたい。
-作者に報告してみて。
-
-＃────────
-＃マウスイベント
+＃■マウスイベント
 ＃────────
 ＊OnMouseDoubleClick
 ＞（Reference3）（Reference4）つつかれ	（Reference5）==0
@@ -212,23 +14,388 @@
 ＞（Reference3）（Reference4）ころクリ	（Reference5）＝＝middle
 
 ＃────────
-＃バグ報告
+＃■時間イベント
+＃────────
+＊OnMinuteChange
+＞時報	（現在分）==0
+
+＊時報
+\0\s[0]（現在時）時よ。
+＞（現在時）時
+\e
+
+＊０時
+\0
+\s[0]今日は（現在月）月（現在日）日、（現在曜日）曜日ね。
+\e
+
+＊６時
+\0
+\s[0]もう朝ね。\w5
+そろそろ朝食にする？
+\e
+
+＊１２時
+\0
+\s[0]お昼なんか作る？\w5それとも食べ行く？
+\e
+
+＊１８時
+\0
+\s[0]夕食どうしよっか？
+\e
+
+＃────────
+＃最小化解除
+＃────────
+＊OnWindowStateRestore
+\0\s[22]もぉ～、急になによぉ……。
+
+＃────────
+＃■表情初期化
+＃────────
+＊OnSurfaceRestore
+＞怒り	（顔射済み）>0
+＞恥じらい２	（全部脱いだ）==1
+＞恥じらい	（キャミ脱いだ）==1||（ズボン脱いだ）==1
+\0\s[0]\c
+
+＊恥じらい
+\0\s[1]\c
+
+＊恥じらい２
+\0\s[58]\c
+
+＊怒り
+\0\s[7]\c
+
+＃────────
+＃■シェル変更
+＃────────
+＊OnShellChanging
+\0\s[5]ちょっと目を瞑っててくれる？\_w[1000]
+\s[2]\cえ？\w5
+\s[20]どうせなら生着替えしてくれって？\w6 \s[28]バカ！\w5
+
+
+＊OnShellChanged
+＄現在シェル	（Reference0）
+＞（Reference0）に着替えた
+\0\s[32]どう？\w5
+マンネリ解消になったかしら？
+\e
+
+＊ダークエルフに着替えた
+\0\s[57]ふふん。\w5
+こんだけ大きければ文句ないでしょ？
+\e
+
+＃────────
+＃着せ替え
+＃────────
+＊セミショート
+\0\![bind,後髪,セミショート,1]\s[5]どう？\w5 似合う？
+＞Dressup
+\e
+＊ツインテ
+\0\![bind,後髪,ツインテ,1]\s[31]こっちの方が好きかしら？
+＞Dressup
+\e
+
+＊キャミ着せ替え
+＄キャミ脱いだ	0
+\0\![bind,上,キャミ,1]\s[0]ん。着たわ。
+＞Dressup
+\e
+
+＊たくし上げ着せ替え
+＄キャミ脱いだ	1
+\0\s[20]全部脱がさないとか・・・マニアックなんだから。\w9
+\![bind,上,キャミたくし上げ,1]
+＞Dressup
+\e
+
+＊キャミ脱がし
+＄キャミ脱いだ	1
+＞下は既に脱いでる	（ズボン脱いだ）==1
+\0\s[36]上だけ脱げって・・・なんか変じゃない？\w9
+\![bind,上,,0]
+＞Dressup
+\e
+
+＊下は既に脱いでる
+\0\s[20]・・・電気、消さない？\w5
+やっぱりまだ恥ずかしい。\w9
+\![bind,上,,0]
+＞Dressup
+\e
+
+＊ズボン着せ替え
+＄ズボン脱いだ	0
+\0\![bind,下,ズボン,1]はい。穿いたわ。
+＞Dressup
+\e
+
+＊ズボン脱がし
+＄ズボン脱いだ	1
+＞ノーパンズボン脱ぎ	（全部脱いだ）==1
+\0（脱ズボン）\w9
+\![bind,下,ズボン,0]
+＞Dressup
+\e
+
+＠脱ズボン
+\s[20]う、よりによってこんな下着の日に・・・。
+\s[21]ほれほれ～。\nこんなかわいい子のパンツが見られるんだから、ありがたく思いなさい♪
+\s[23]あ～・・・ちょっぴり開放感（はーと）
+\s[29]・・・・・・シたいの？
+
+＊ノーパンズボン脱ぎ
+\0\s[29]・・・しょーがないわねぇ。\w9
+\![bind,下,ズボン,0]
+＞Dressup
+\e
+
+＊パンツ着せ替え
+＄全部脱いだ	0
+\0\s[38]・・・・・・。\w9
+\![bind,下着,下着,1]
+＞Dressup
+\e
+
+＊パンツ脱がし
+＄全部脱いだ	1
+＞ノーパンになった	（ズボン脱いだ）==0
+\0（脱パンツ）\w9\![bind,下着,下着,0]
+＞Dressup
+\e
+
+＠脱パンツ
+\s[29]アンタにだけだからね。
+\s[33]そーかそーか。そんなに見たいか。
+\s[34]はずかしーんだから、あんましジロジロ見ないでよね。
+\s[38]・・・・・・はい。
+\s[41]・・・見たい？
+
+＊ノーパンになった
+\0\s[26]ぱ、パンツだけ脱がすなんて・・・！\w9
+\![bind,下着,下着,0]
+＞Dressup
+\e
+
+＊ノーパンになった
+\0\s[28]ちょ、ちょっと！\w5
+今脱いだパンツ返してよ！\w5
+
+それどうする気よ！？\w9
+\![bind,下着,下着,0]
+＞Dressup
+\e
+
+＊ノーパンになった
+\0\s[34]う・・・ちょっと開放感をおぼえてる自分がヤだわ\w9
+\![bind,下着,下着,0]
+＞Dressup
+\e
+
+＃────────
+＃■時計合わせ
+＃────────
+＊OnSNTPBegin
+\0\s[3]時計合わせ？\w6
+\s[4]それくらい自分でやりなさいよ、もー。
+\e
+
+＊OnSNTPCompare	（Reference3）!=0
+\6
+
+＊OnSNTPCompare	（Reference3）==0
+\0\s[4]って、なによ。
+ちゃんと合ってるじゃない。
+\e
+
+＊OnSNTPCorrect
+\0\s[31]はい、合わせておいたわよ。
+\e
+
+＊OnSNTPFailure
+\0\s[22]ってあれ？\w6
+失敗したみたい……繋がらない？\e
+
+＃────────
+＃■インストール
+＃────────
+＊OnInstallBegin
+\0\s[0]インストールね。\w5
+任せておきなさい。
+
+＊OnInstallComplete
+＞（Reference0）をインストール
+\0\s[0]『（replace（バイト値,１）（Reference1）（バイト値,１）\（バイト値,１）\\）』をインストールしたわ。\w5
+（Reference0）ね。
+\e
+
+＊ghostをインストール
+\0\s[0]『（replace（バイト値,１）（Reference1）（バイト値,１）\（バイト値,１）\\）』をインストールしたわ。\w5
+\s[24]って誰よコレ？\w3 浮気？
+\e
+
+
+＊OnInstallFailure
+\0\s[9]インストールに失敗したみたい。\w5
+原因は『（Reference0）』だって。
+\e
+
+＊OnInstallRefuse
+\0\s[7]これ、『（replace（バイト値,１）（Reference0）（バイト値,１）\（バイト値,１）\\）』さんのじゃない。
+ちゃんと本人に渡してなさいよね。
+\e
+
+＃────────
+＃■ダウンロード
+＃────────
+＊OnURLDropping
+\0\s[0]ダウンロードね。\e
+
+＊OnURLDropped
+\0\s[31]ダウンロード終わり。
+\_q（Reference0）\_qに置いといたわ。\e
+
+＊OnURLDropFailure
+\0\s[3]ダウンロードに失敗したわ。\e
+
+＃────────
+＃■ネットワーク更新
+＃────────
+＊OnUpdateBegin
+\0\s[0]更新情報を取得するわ。
+
+
+＊OnUpdateReady	（Reference0）<5
+\0\s[5]（Reference0）個のファイルが更新されるみたい。
+
+＊OnUpdateReady	（Reference0）>5
+\0\s[5]（Reference0）個のファイルが更新されるみたい。\w5
+\s[9]結構あるわね。
+
+
+＊OnUpdateComplete	（Reference0）==none
+\0\s[36]残念。
+とくに更新されてないみたいね。
+
+＊OnUpdateComplete	（Reference0）==changed
+\0\s[5]ネットワーク更新、無事終了したわよ。
+
+
+＊OnUpdateFailure
+＞（Reference0）で失敗
+\0\s[3]「（Reference0）」で失敗したわ。
+\e
+
+＊timeoutで失敗
+\0\s[36]時間切れ。\w6
+重すぎてファイルが落ちてこないみたい。
+\e
+
+＊md5 missで失敗
+\0\s[4]データが一致しなかったわ。
+回線状態が悪いのか、updates2.dauがおかしいのかも。
+\e
+
+＊404で失敗
+\0\s[9]更新用ファイルが見つからなかったわ。
+\e
+
+＊artificialで失敗
+\0\s[30]中断するわよ？
+\e
+
+＃────────
+＃■ファイル作成
+＃────────
+＊OnUpdatedataCreating
+\0\s[0]更新ファイルを作っておくわね。\e
+
+＊OnUpdatedataCreated
+\0\s[5]ん、完成！\w5
+更新するのね。偉いじゃない！
+\e
+
+＊OnNarCreating
+\0\s[0]narに梱包しておくわ。
+\e
+
+＊OnNarCreated
+\0\s[5]はいお終い！
+\e
+
+＃────────
+＃■文字入力
+＃────────
+＊OnUserInput
+＞（Reference0）を空打ちされた	（is_empty（バイト値,１）（Reference1））
+＄（Reference0）	（Reference1）
+＞（Reference0）を教えてもらった
+
+＊OnUserInputCancel
+＞（Reference0）をタイムアウト	（compare（バイト値,１）（Reference1）（バイト値,１）timeout）
+＞（Reference0）を空打ちされた	（compare,（Reference1）,close）
+
+＃────────
+＃■キー押下
+＃────────
+＊OnKeyPress
+＞（Reference0）が押された
+
+＊tが押された
+＄re_talk	（）
+（re_talk）
+
+＊mが押された
+＞メニュー
+
+＊cが押された
+＞Communication
+
+＊rが押された
+＄辞書リロード	実行
+\0\s[0]リロードしたわ。\e
+
+＊sが押された
+\0\s[0]（現在年）年（現在月）月（現在日）日φ（（現在曜日）φ）\n
+ランダムトークφ：（countNoNameTalk）個\e
+
+＃────────
+＃選択肢
+＃────────
+＊OnAnchorSelectEx
+＄選択ラベル	（Reference0）
+＄選択ID	（Reference1）
+＞（Reference1）
+\0\s[3]『（Reference0）』が見つからないみたい。
+作者に報告してみて。
+\e
+
+＃────────
+＃■バグ報告
 ＃────────
 ＊OnWebClap
-\0\s[7]なにかあったら、直ぐに言いなさいよ。
 \![open,inputbox,拍手送信内容,-1,いいね！,--limit=1000]
+\0\s[7]なにかあったら、直ぐに言いなさいよ。
+\e
 
 ＊拍手送信内容を教えてもらった
 \![execute,http-post,http://clap.webclap.com/clap.php?id=etwaslangsam,--param=message_body="エルフ＠（拍手送信内容）",--async=webclap]
 ＄拍手送信内容	
 
 ＊拍手送信内容を空打ちされた
-\0\s[30]やめちゃうの？
+\0\s[30]やめちゃうの？\e
 
 ＊OnExecuteHTTPComplete	（Reference1）==webclap
 \0\s[5]送ったわ。ありがとね。\w5
 アンタもたまにはいいトコ見せてくるのね。
+\e
 
 ＊OnExecuteHTTPFailure	（Reference1）==webclap
 \0\s[4]「（Reference4）」？\w3 が原因で失敗よ。
-
+\e
