@@ -13,11 +13,18 @@
 ＊OnMouseClickEx
 ＞（Reference3）（Reference4）ころクリ	（Reference5）＝＝middle
 
+＊OnMouseEnter
+＄（Reference4）見つめタイマ	1
+
+＊OnMouseLeave
+＄（Reference4）見つめタイマ	1
+
 ＃────────
 ＃■時間イベント
 ＃────────
 ＊OnMinuteChange
-＞時報	（現在分）==0
+＞時報	（compare,（現在分）,０）
+\e
 
 ＊時報
 \0\s[0]（現在時）時よ。
@@ -46,10 +53,20 @@
 \e
 
 ＃────────
-＃最小化解除
+＃■最小化解除
 ＃────────
 ＊OnWindowStateRestore
-\0\s[22]もぉ～、急になによぉ……。
+\0\s[22]もぉ～、急になによぉ。
+\e
+
+＃────────
+＃■サスペンド解除
+＃────────
+＊OnSysResume
+\0\s[31]あら、おはよう。\w5
+\s[5]アンタの寝顔、見させてもらったわよ。
+\e
+
 
 ＃────────
 ＃■表情初期化
@@ -206,19 +223,24 @@
 \s[4]それくらい自分でやりなさいよ、もー。
 \e
 
-＊OnSNTPCompare	（Reference3）!=0
+＊OnSNTPCompare
+＞時計ズレなし	（Reference3）==0
 \6
 
-＊OnSNTPCompare	（Reference3）==0
+＊時計ズレなし
 \0\s[4]って、なによ。
 ちゃんと合ってるじゃない。
 \e
 
 ＊OnSNTPCorrect
+＄ほめてほしい	1
+＄ほめられなかったタイマ	１５
 \0\s[31]はい、合わせておいたわよ。
 \e
 
 ＊OnSNTPFailure
+＄なぐさめてほしい	1
+＄なぐさめられなかったタイマ	１５
 \0\s[22]ってあれ？\w6
 失敗したみたい……繋がらない？\e
 
@@ -231,6 +253,8 @@
 
 ＊OnInstallComplete
 ＞（Reference0）をインストール
+＄ほめてほしい	1
+＄ほめられなかったタイマ	１５
 \0\s[0]『（replace（バイト値,１）（Reference1）（バイト値,１）\（バイト値,１）\\）』をインストールしたわ。\w5
 （Reference0）ね。
 \e
@@ -242,6 +266,8 @@
 
 
 ＊OnInstallFailure
+＄なぐさめてほしい	1
+＄なぐさめられなかったタイマ	１５
 \0\s[9]インストールに失敗したみたい。\w5
 原因は『（Reference0）』だって。
 \e
@@ -258,10 +284,14 @@
 \0\s[0]ダウンロードね。\e
 
 ＊OnURLDropped
+＄ほめてほしい	1
+＄ほめられなかったタイマ	１５
 \0\s[31]ダウンロード終わり。
 \_q（Reference0）\_qに置いといたわ。\e
 
 ＊OnURLDropFailure
+＄なぐさめてほしい	1
+＄なぐさめられなかったタイマ	１５
 \0\s[3]ダウンロードに失敗したわ。\e
 
 ＃────────
@@ -271,23 +301,26 @@
 \0\s[0]更新情報を取得するわ。
 
 
-＊OnUpdateReady	（Reference0）<5
+＊OnUpdateReady
 \0\s[5]（Reference0）個のファイルが更新されるみたい。
+（when,（Reference0）>5,\s[9]結構あるわね。）
+\e
 
-＊OnUpdateReady	（Reference0）>5
-\0\s[5]（Reference0）個のファイルが更新されるみたい。\w5
-\s[9]結構あるわね。
+＊OnUpdateComplete
+＞noupdate	（compare,（Reference0）,none）
+＄ほめてほしい	1
+＄ほめられなかったタイマ	１５
+\0\s[5]ネットワーク更新、無事終了したわよ。
+\e
 
-
-＊OnUpdateComplete	（Reference0）==none
+＊noupdate
 \0\s[36]残念。
 とくに更新されてないみたいね。
-
-＊OnUpdateComplete	（Reference0）==changed
-\0\s[5]ネットワーク更新、無事終了したわよ。
-
+\e
 
 ＊OnUpdateFailure
+＄なぐさめてほしい	1
+＄なぐさめられなかったタイマ	１５
 ＞（Reference0）で失敗
 \0\s[3]「（Reference0）」で失敗したわ。
 \e
@@ -311,22 +344,43 @@
 \e
 
 ＃────────
+＃■SSP更新
+＃────────
+＊OnBasewareUpdating
+＄更新前バージョン	（Reference0）
+\0\s[0]SSPをアップデートするね。
+\e
+
+＊OnBasewareUpdated
+\0\s[0]SSPが（更新前バージョン）から（Reference0）になったって。
+＄更新前バージョン	
+\e
+
+＃────────
 ＃■ファイル作成
 ＃────────
 ＊OnUpdatedataCreating
-\0\s[0]更新ファイルを作っておくわね。\e
+\0\s[0]更新ファイルの作成、っと。
+\e
 
 ＊OnUpdatedataCreated
-\0\s[5]ん、完成！\w5
-更新するのね。偉いじゃない！
+＄ほめてほしい	1
+＄ほめられなかったタイマ	１５
+\0\s[0]はい出来た。\w5
+更新するの？\w3 \s[5]偉いじゃない。
 \e
 
 ＊OnNarCreating
-\0\s[0]narに梱包しておくわ。
+\0\s[0]narファイルの作成ね。
 \e
 
 ＊OnNarCreated
-\0\s[5]はいお終い！
+＄ほめてほしい	1
+＄ほめられなかったタイマ	１５
+\0\s[5]出来たよ。
+\_q
+（Reference1）
+\_q
 \e
 
 ＃────────
@@ -368,10 +422,18 @@
 ＃────────
 ＃選択肢
 ＃────────
-＊OnAnchorSelectEx
-＄選択ラベル	（Reference0）
-＄選択ID	（Reference1）
-＞（Reference1）
+＊OnChoiceSelect
+＞（Reference0）
+\0\s[3]『（Reference0）』が見つからないみたい。
+作者に報告してみて。
+\e
+
+＊OnChoiceTimeout
+\0\s[7]ちょっと聞いてる？
+\e
+
+＊OnAnchorSelect
+＞（Reference0）
 \0\s[3]『（Reference0）』が見つからないみたい。
 作者に報告してみて。
 \e
