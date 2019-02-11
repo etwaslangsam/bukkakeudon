@@ -15,6 +15,7 @@
 ＄全部脱いだ	0
 ＄彼女の名前	エルフな彼女
 ＄オナニーを見た	0
+＄現在シェル	<censored>エルフ
 ＠SAORI
 calc,saori/ssu.dll,calc
 calc_float,saori/ssu.dll,calc_float
