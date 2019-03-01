@@ -7,6 +7,7 @@ craftmanurl,https://hotpepar.blogspot.jp
 homeurl,https://raw.githubusercontent.com/etwaslangsam/bukkakeudon/master/
 readme,readme.txt
 sakura.name,ƒGƒ‹ƒt‚È”Ş—
+kero.name,‚È‚µ
 sakura.seriko.defaultsurface,0
 kero.seriko.defaultsurface,10
 balloon.defaultsurface,0
