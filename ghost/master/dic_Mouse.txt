@@ -1,3 +1,27 @@
+＃────────
+＃■マウスイベント
+＃────────
+＊OnMouseDoubleClick
+＞（Reference3）（Reference4）つつかれ	（Reference5）==0
+\e
+
+＊OnMouseWheel
+＞（Reference3）（Reference4）ころころ上	（Reference2）＞0
+＞（Reference3）（Reference4）ころころ下	（Reference2）＜0
+＞（Reference3）（Reference4）ころころ
+\e
+
+＊OnMouseClickEx
+＞（Reference3）（Reference4）ころクリ	（Reference5）＝＝middle
+\e
+
+＊OnMouseEnter
+＄（Reference4）見つめタイマ	1
+\e
+
+＊OnMouseLeave
+＄（Reference4）見つめタイマ	1
+\e
 
 ＃────────
 ＃■頭

@@ -1,25 +1,5 @@
 
 ＃────────
-＃■マウスイベント
-＃────────
-＊OnMouseDoubleClick
-＞（Reference3）（Reference4）つつかれ	（Reference5）==0
-
-＊OnMouseWheel
-＞（Reference3）（Reference4）ころころ上	（Reference2）＞0
-＞（Reference3）（Reference4）ころころ下	（Reference2）＜0
-＞（Reference3）（Reference4）ころころ
-
-＊OnMouseClickEx
-＞（Reference3）（Reference4）ころクリ	（Reference5）＝＝middle
-
-＊OnMouseEnter
-＄（Reference4）見つめタイマ	1
-
-＊OnMouseLeave
-＄（Reference4）見つめタイマ	1
-
-＃────────
 ＃■時間イベント
 ＃────────
 ＊OnMinuteChange
@@ -62,7 +42,6 @@
 \s[5]アンタの寝顔、見させてもらったわよ。
 \e
 
-
 ＃────────
 ＃■表情初期化
 ＃────────
@@ -100,6 +79,10 @@
 ＊ダークエルフに着替えた
 \0\s[57]ふふん。\w5
 こんだけ大きければ文句ないでしょ？
+\e
+
+＊つるつるしこしこに着替えた
+\0\s[5]ね、いろいろ服出したからさ、アンタがコーディネートしてよ。
 \e
 
 ＃────────
@@ -210,33 +193,47 @@
 ＞Dressup
 \e
 
-＊つるしこツインテ
+＃────────
+＃つるしこ
+＃────────
+＊ツインテール
 \0\![bind,後ろ髪,ツインテール,1]
 ＞着せ替え髪
-＊つるしこショート
+＊ショート
 \0\![bind,後ろ髪,ショート,1]\![bind,髪飾り,リボン,0]
 ＞着せ替え髪
-＊つるしこ下ろし
+＊下ろし
 \0\![bind,後ろ髪,下ろし,1]
 ＞着せ替え髪
-＊つるしこもみあげ
+
+＊もみあげ１
 \0\![bind,髪その他,もみあげ１,1]
 ＞着せ替え髪
-＊つるしこアホ毛
+＊もみあげ１外す
+\0\![bind,髪その他,もみあげ１,0]
+＞着せ替え髪
+
+＊アホ毛
 \0\![bind,髪その他,アホ毛,1]
 ＞着せ替え髪
-＊髪外し
-\0\![bind,髪その他,,0]
+＊アホ毛外す
+\0\![bind,髪その他,アホ毛,0]
 ＞着せ替え髪
-＊つるしこリボン
+
+＊リボン
 \0\![bind,髪飾り,リボン,1]
 ＞着せ替え髪
-＊つるしこバニー
+＊リボン外す
+\0\![bind,髪飾り,リボン,0]
+＞着せ替え髪
+
+＊バニーカチュ
 \0\![bind,髪飾り,バニーカチュ,1]
 ＞着せ替え髪
-＊飾り外し
-\0\![bind,髪飾り,,0]
+＊バニーカチュ外す
+\0\![bind,髪飾り,バニーカチュ,0]
 ＞着せ替え髪
+
 
 ＊ミニT白
 ＄キャミ脱いだ	
@@ -640,13 +637,15 @@
 ＃■文字入力
 ＃────────
 ＊OnUserInput
+＞（Reference0）をタイムアウト	（compare（バイト値,１）（Reference1）（バイト値,１）timeout）
 ＞（Reference0）を空打ちされた	（is_empty（バイト値,１）（Reference1））
 ＄（Reference0）	（Reference1）
 ＞（Reference0）を教えてもらった
+\e
 
 ＊OnUserInputCancel
-＞（Reference0）をタイムアウト	（compare（バイト値,１）（Reference1）（バイト値,１）timeout）
 ＞（Reference0）を空打ちされた	（compare,（Reference1）,close）
+\e
 
 ＃────────
 ＃■キー押下
