@@ -2,3 +2,4 @@
 .gitignore,nonar,noupdate
 shell/darkelf/,nonar,noupdate
 shell/UDON/,nonar,noupdate
+ghost/master/ssp_shiori_log.txt,nonar,noupdate
