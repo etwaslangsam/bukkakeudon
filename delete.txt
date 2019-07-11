@@ -1,7 +1,7 @@
 .git\
 .gitignore
+ghost\master\ssp_shiori_log.txt
 thumbnail.png
 ghost\master\dic_Time.txt
 ghost\master\dic_String.txt
 ghost\master\dic_Communication.txt
-ghost\master\ssp_shiori_log.txt
