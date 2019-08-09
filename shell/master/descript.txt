@@ -57,5 +57,15 @@ sakura.bindgroup20000.default,1
 sakura.bindgroup50000.default,1
 sakura.bindgroup40000.default,1
 
+sakura.menuitem0,00001
+sakura.menuitem1,00003
+sakura.menuitem2,-
+sakura.menuitem3,20000
+sakura.menuitem4,20100
+sakura.menuitem5,-
+sakura.menuitem6,50000
+sakura.menuitem7,-
+sakura.menuitem8,40000
+
 ©—RˆÚ“®
 seriko.alignmenttodesktop,free
