@@ -30,7 +30,6 @@
 \![*]\q[ぶっかけさせて,ぶっかけさせて]\n[half]
 \![*]\q[話しかける,Communication]\n[half]
 \![*]\q[設定の変更,Setting]\n[half]
-\![*]\q[ご意見φ・ご感想など,OnWebClap]
 
 \q[なんでもない,Cancel]
 \_q
@@ -165,7 +164,7 @@ https://hotpepar.blogspot.com/
 
 
 ＊sakura.portalsites
-メッセージフォーム
+連絡先
 https://goo.gl/forms/qJhnaKjUfVtcOWSk1
 
 

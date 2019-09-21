@@ -335,27 +335,3 @@
 \0\s[3]『（Reference0）』が見つからないみたい。
 作者に報告してみて。
 \e
-
-＃────────
-＃■バグ報告
-＃────────
-＊OnWebClap
-\![open,inputbox,拍手送信内容,-1,いいね！,--limit=1000]
-\0\s[7]なにかあったら、直ぐに言いなさいよ。
-\e
-
-＊拍手送信内容を教えてもらった
-\![execute,http-post,http://clap.webclap.com/clap.php?id=etwaslangsam,--param=message_body="エルフ＠（拍手送信内容）",--async=webclap]
-＄拍手送信内容	
-
-＊拍手送信内容を空打ちされた
-\0\s[30]やめちゃうの？\e
-
-＊OnExecuteHTTPComplete	（Reference1）==webclap
-\0\s[5]送ったわ。ありがとね。\w5
-アンタもたまにはいいトコ見せてくるのね。
-\e
-
-＊OnExecuteHTTPFailure	（Reference1）==webclap
-\0\s[4]「（Reference4）」？\w3 が原因で失敗よ。
-\e
