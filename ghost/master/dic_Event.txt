@@ -1,67 +1,5 @@
-
 ＃────────
-＃■時間イベント
-＃────────
-＊OnMinuteChange
-\e
-
-＊OnHourTimeSignal
-＞（現在時）時
-\e
-
-＊０時
-\0\s[3]もうこんな時間・・・。
-\e
-
-＊６時
-\0\s[0]もう朝ね。\w5
-そろそろ朝食にする？
-\e
-
-＊１２時
-\0\s[0]お昼なんか作る？\w5
-それとも食べ行く？
-\e
-
-＊１８時
-\0\s[0]夕食どうしよっか？
-\e
-
-＃────────
-＃■最小化解除
-＃────────
-＊OnWindowStateRestore
-\0\s[22]もぉ～、急になによぉ。
-\e
-
-＃────────
-＃■サスペンド解除
-＃────────
-＊OnSysResume
-\0\s[31]あら、おはよう。\w5
-\s[5]アンタの寝顔、見させてもらったわよ。
-\e
-
-＃────────
-＃■表情初期化
-＃────────
-＊OnSurfaceRestore
-＞怒り	（顔射済み）>0
-＞恥じらい２	（全部脱いだ）==1
-＞恥じらい	（キャミ脱いだ）==1||（ズボン脱いだ）==1
-\0\s[0]\c
-
-＊恥じらい
-\0\s[1]\c
-
-＊恥じらい２
-\0\s[58]\c
-
-＊怒り
-\0\s[7]\c
-
-＃────────
-＃■シェル変更
+＃シェル変更
 ＃────────
 ＊OnShellChanging
 ＞お色直し	（顔射済み）>0
@@ -78,28 +16,23 @@
 \s[8]ま、いいわ。
 ついでに顔洗ってくるからちょっと待ってなさい。\s[-1]
 \![bind,液,,0]\_w[1000]
-\e
 
 ＊OnShellChanged
 ＄現在シェル	（Reference0）
 ＞（Reference0）に着替えた
 \0\s[32]どう？\w5
-マンネリ解消になったかしら？
-\e
+マンネリ解消になったかしら？\e
 
 ＊ダークエルフに着替えた
 \0\s[57]ふふん。\w5
-こんだけ大きければ文句ないでしょ？
-\e
+こんだけ大きければ文句ないでしょ？\e
 
 ＊つるつるしこしこに着替えた
-\0\s[5]ね、いろいろ服出したからさ、アンタがコーディネートしてよ。
-\e
+\0\s[5]ね、いろいろ服出したからさ、アンタがコーディネートしてよ。\e
 
 ＊ミニうどんに着替えた
 ＞ミニうどん初回	（初ロリ化）==0
-\0\s[34]またコレか……。
-\e
+\0\s[34]またコレか……。\e
 
 ＊ミニうどん初回
 ＄初ロリ化	１
@@ -113,74 +46,157 @@
 \s[2]ってことはやっぱアンタの仕業か！\_w[1000]
 
 \s[30]はぁ。しょうがないわね。\w5
-\s[36]好きにしなさいよもう。
-\e
-
+\s[36]好きにしなさいよもう。\e
 
 ＃────────
-＃■時計合わせ
+＃最小化解除
 ＃────────
-＊OnSNTPBegin
-\0\s[3]時計合わせ？\w6
-\s[4]それくらい自分でやりなさいよ、もー。
-\e
-
-＊OnSNTPCompare
-＞時計ズレなし	（Reference3）==0
-\6
-
-＊時計ズレなし
-\0\s[4]って、なによ。
-ちゃんと合ってるじゃない。
-\e
-
-＊OnSNTPCorrect
-＄ほめてほしい	1
-＄ほめられなかったタイマ	１５
-\0\s[31]はい、合わせておいたわよ。
-\e
-
-＊OnSNTPFailure
-＄なぐさめてほしい	1
-＄なぐさめられなかったタイマ	１５
-\0\s[22]ってあれ？\w6
-失敗したみたい……繋がらない？\e
+＊OnWindowStateRestore
+\0\s[22]もぉ～、急になによぉ。\e
 
 ＃────────
-＃■インストール
+＃サスペンド解除
+＃────────
+＊OnSysResume
+\0\s[31]あら、おはよう。\w5
+\s[5]アンタの寝顔、見させてもらったわよ。\e
+
+＃────────
+＃SSP更新
+＃────────
+＊OnBasewareUpdating
+＄更新前バージョン	（Reference0）
+\0\s[0]SSPをアップデートするね。\w9
+
+＊OnBasewareUpdated
+\0\s[0]SSPが（更新前バージョン）から（Reference0）になったって。
+＄更新前バージョン	
+\e
+
+＃────────
+＃文字入力
+＃────────
+＊OnCommunicate
+≫「　（Reference1）	（compare,（Reference0）,user）
+＞名前を呼ぶ	（compare,（Reference1）,（彼女の名前））
+\0\s[3]え？\w3 ああ・・・\s[8]うん？\e
+
+＊OnUserInput
+＞（Reference0）を空打ちされた	（is_empty（バイト値,１）（Reference1））
+＄（Reference0）	（Reference1）
+＞（Reference0）を教えてもらった
+
+＊OnUserInputCancel
+＞（Reference0）をタイムアウト	（compare（バイト値,１）（Reference1）（バイト値,１）timeout）
+＞（Reference0）を空打ちされた	（compare,（Reference1）,close）
+
+＃────────
+＃時間イベント
+＃────────
+＊OnHourTimeSignal
+＞（現在時）時
+
+＊０時
+\0\s[3]もうこんな時間・・・。\e
+
+＊６時
+\0\s[0]もう朝ね。\w5
+そろそろ朝食にする？\e
+
+＊１２時
+\0\s[0]お昼なんか作る？\w5
+それとも食べ行く？\e
+
+＊１８時
+\0\s[0]夕食どうしよっか？\e
+
+＃────────
+＃選択肢
+＃────────
+＊OnChoiceSelect
+＞（Reference0）
+＞選択先がない
+
+＊OnChoiceTimeout
+\0\s[7]ちょっと聞いてる？\e
+
+＊OnAnchorSelect
+＞（Reference0）
+＞選択先がない
+
+＊選択先がない
+\0\s[3]『（Reference0）』が見つからないみたい。
+作者に報告してみて。\e
+
+＃────────
+＃表情初期化
+＃────────
+＊OnSurfaceRestore
+＞怒り	（顔射済み）>0
+＞恥じらい２	（全部脱いだ）==1
+＞恥じらい	（キャミ脱いだ）==1
+\0\s[0]\c
+
+＊恥じらい
+\0\s[1]\c
+
+＊恥じらい２
+\0\s[58]\c
+
+＊怒り
+\0\s[7]\c
+
+＃────────
+＃マウスイベント
+＃────────
+＊OnMouseDoubleClick
+＞（Reference3）（Reference4）つつかれ	（Reference5）==0
+
+＊OnMouseWheel
+＞（Reference3）（Reference4）ころころ上	（Reference2）＞0
+＞（Reference3）（Reference4）ころころ下	（Reference2）＜0
+＞（Reference3）（Reference4）ころころ
+
+＊OnMouseClickEx
+＞（Reference3）（Reference4）ころクリ	（Reference5）＝＝middle
+
+＊OnMouseEnter
+＄（Reference4）見つめタイマ	1
+
+＊OnMouseLeave
+＄（Reference4）見つめタイマ	1
+
+＃────────
+＃インストール
 ＃────────
 ＊OnInstallBegin
 \0\s[0]インストールね。\w5
-任せておきなさい。
+任せておきなさい。\w9
 
 ＊OnInstallComplete
 ＞（Reference0）をインストール
 ＄ほめてほしい	1
 ＄ほめられなかったタイマ	１５
 \0\s[0]『（replace（バイト値,１）（Reference1）（バイト値,１）\（バイト値,１）\\）』をインストールしたわ。\w5
-（Reference0）ね。
-\e
+（Reference0）ね。\e
 
 ＊ghostをインストール
 \0\s[0]『（replace（バイト値,１）（Reference1）（バイト値,１）\（バイト値,１）\\）』をインストールしたわ。\w5
-\s[24]って誰よコレ？\w3 浮気？
-\e
+\s[24]って誰よコレ？\w3 浮気？\e
 
 
 ＊OnInstallFailure
 ＄なぐさめてほしい	1
 ＄なぐさめられなかったタイマ	１５
 \0\s[9]インストールに失敗したみたい。\w5
-原因は『（Reference0）』だって。
-\e
+原因は『（Reference0）』だって。\e
 
 ＊OnInstallRefuse
 \0\s[7]これ、『（replace（バイト値,１）（Reference0）（バイト値,１）\（バイト値,１）\\）』さんのじゃない。
-ちゃんと本人に渡してなさいよね。
-\e
+ちゃんと本人に渡してなさいよね。\e
 
 ＃────────
-＃■ダウンロード
+＃ダウンロード
 ＃────────
 ＊OnURLDropping
 \0\s[0]ダウンロードね。\e
@@ -197,84 +213,19 @@
 \0\s[3]ダウンロードに失敗したわ。\e
 
 ＃────────
-＃■ネットワーク更新
-＃────────
-＊OnUpdateBegin
-\0\s[0]更新情報を取得するわ。
-
-
-＊OnUpdateReady
-\0\s[5]（Reference0）個のファイルが更新されるみたい。
-（when,（Reference0）>5,\s[9]結構あるわね。）
-\e
-
-＊OnUpdateComplete
-＞noupdate	（compare,（Reference0）,none）
-＄ほめてほしい	1
-＄ほめられなかったタイマ	１５
-\0\s[5]ネットワーク更新、無事終了したわよ。
-\e
-
-＊noupdate
-\0\s[36]残念。
-とくに更新されてないみたいね。
-\e
-
-＊OnUpdateFailure
-＄なぐさめてほしい	1
-＄なぐさめられなかったタイマ	１５
-＞（Reference0）で失敗
-\0\s[3]「（Reference0）」で失敗したわ。
-\e
-
-＊timeoutで失敗
-\0\s[36]時間切れ。\w6
-重すぎてファイルが落ちてこないみたい。
-\e
-
-＊md5 missで失敗
-\0\s[4]データが一致しなかったわ。
-回線状態が悪いのか、updates2.dauがおかしいのかも。
-\e
-
-＊404で失敗
-\0\s[9]更新用ファイルが見つからなかったわ。
-\e
-
-＊artificialで失敗
-\0\s[30]中断するわよ？
-\e
-
-＃────────
-＃■SSP更新
-＃────────
-＊OnBasewareUpdating
-＄更新前バージョン	（Reference0）
-\0\s[0]SSPをアップデートするね。
-\e
-
-＊OnBasewareUpdated
-\0\s[0]SSPが（更新前バージョン）から（Reference0）になったって。
-＄更新前バージョン	
-\e
-
-＃────────
-＃■ファイル作成
+＃ファイル作成
 ＃────────
 ＊OnUpdatedataCreating
-\0\s[0]更新ファイルの作成、っと。
-\e
+\0\s[0]更新ファイルの作成、っと。\e
 
 ＊OnUpdatedataCreated
 ＄ほめてほしい	1
 ＄ほめられなかったタイマ	１５
 \0\s[0]はい出来た。\w5
-更新するの？\w3 \s[5]偉いじゃない。
-\e
+更新するの？\w3 \s[5]偉いじゃない。\e
 
 ＊OnNarCreating
-\0\s[0]narファイルの作成ね。
-\e
+\0\s[0]narファイルの作成ね。\e
 
 ＊OnNarCreated
 ＄ほめてほしい	1
@@ -286,19 +237,87 @@
 \e
 
 ＃────────
-＃■文字入力
+＃ネットワーク更新
 ＃────────
-＊OnUserInput
-＞（Reference0）を空打ちされた	（is_empty（バイト値,１）（Reference1））
-＄（Reference0）	（Reference1）
-＞（Reference0）を教えてもらった
+＊OnUpdateBegin
+\0\s[0]更新情報を取得するわ。\w9
 
-＊OnUserInputCancel
-＞（Reference0）をタイムアウト	（compare（バイト値,１）（Reference1）（バイト値,１）timeout）
-＞（Reference0）を空打ちされた	（compare,（Reference1）,close）
+＊OnUpdateReady
+\0\s[5]（Reference0）個のファイルが更新されるみたい。
+（when,（Reference0）>5,\s[9]結構あるわね。）\e
+
+＊OnUpdateComplete
+＞noupdate	（compare,（Reference0）,none）
+＄ほめてほしい	1
+＄ほめられなかったタイマ	１５
+\0\s[5]ネットワーク更新、無事終了したわよ。\e
+
+＊noupdate
+\0\s[36]残念。
+とくに更新されてないみたいね。\e
+
+＊OnUpdateFailure
+＄なぐさめてほしい	1
+＄なぐさめられなかったタイマ	１５
+＞（Reference0）で失敗
+\0\s[3]「（Reference0）」で失敗したわ。\e
+
+＊timeoutで失敗
+\0\s[36]時間切れ。\w6
+重すぎてファイルが落ちてこないみたい。\e
+
+＊md5 missで失敗
+\0\s[4]データが一致しなかったわ。
+回線状態が悪いのか、updates2.dauがおかしいのかも。\e
+
+＊404で失敗
+\0\s[9]更新用ファイルが見つからなかったわ。\e
+
+＊artificialで失敗
+\0\s[30]中断するわよ？\e
 
 ＃────────
-＃■キー押下
+＃時計合わせ
+＃────────
+＊OnSNTPBegin
+\0\s[3]時計合わせ？\w6
+\s[4]それくらい自分でやりなさいよ、もー。\w9
+
+＊OnSNTPCompare
+＞時計ズレなし	（Reference3）==0
+\6
+
+＊時計ズレなし
+\0\s[4]って、なによ。
+ちゃんと合ってるじゃない。\e
+
+＊OnSNTPCorrect
+＄ほめてほしい	1
+＄ほめられなかったタイマ	１５
+\0\s[31]はい、合わせておいたわよ。\e
+
+＊OnSNTPFailure
+＄なぐさめてほしい	1
+＄なぐさめられなかったタイマ	１５
+\0\s[22]ってあれ？\w6
+失敗したみたい……繋がらない？\e
+
+＃────────
+＃カレンダーイベント
+＃────────
+＊OnSchedule5MinutesToGo
+\0\s[2]あっ、ほら！
+『（Reference1）』五分前よ？\w3
+\s[0]ちゃんと準備できてる？\e
+
+＃────────
+＃ネットワーク状態
+＃────────
+＊OnNetworkHeavy
+\0\s[4]サーバが応答しないみたい・・・。\e
+
+＃────────
+＃キー押下
 ＃────────
 ＊OnKeyPress
 ＞（Reference0）が押された
@@ -308,6 +327,8 @@
 （）
 
 ＊mが押された
+＞最後メニュー	（顔射済み）>3
+＞途中メニュー	（顔射済み）>0
 ＞メニュー
 
 ＊cが押された
@@ -317,21 +338,56 @@
 ＄辞書リロード	実行
 \0リロードしたわ。\e
 
-＃────────
-＃選択肢
-＃────────
-＊OnChoiceSelect
-＞（Reference0）
-\0\s[3]『（Reference0）』が見つからないみたい。
-作者に報告してみて。
-\e
+＊pが押された
+\0\s[3]写真？\w5
+\s[0]まあ、いいけど・・・\s[5]へへへ\_u[0x266A]\e
 
-＊OnChoiceTimeout
-\0\s[7]ちょっと聞いてる？
-\e
+＃────────
+＃外部アプリ汎用イベント
+＃────────
+＊OnApplicationBoot
+\0\s[0]『（Reference0）』を起動したわよ。\e
 
-＊OnAnchorSelect
-＞（Reference0）
-\0\s[3]『（Reference0）』が見つからないみたい。
-作者に報告してみて。
-\e
+＊OnApplicationClose
+\0\s[0]『（Reference0）』が終了したみたいね。\e
+
+＊OnApplicationExist
+\0\s[3]『（Reference0）』？\e
+
+＊OnApplicationVersion
+\0\s[0]（Reference0） - （Reference2）
+（Reference3）
+（Reference4）
+（Reference1）\e
+
+＊OnWebsiteUpdateNotify
+\0\s[0]『（Reference0）』が更新されたみたい。\e
+
+＃────────
+＃Elona omake_MMA
+＃────────
+＊OnElonaOmakeMMAEventGameLoad
+\0\s[0]\_q（Reference1）年 （Reference2）月（Reference3）日\_q\n
+おかえり、『（Reference22）』（Reference21）。\e
+
+＊OnElonaOmakeMMAEventGameQuit
+\0\s[5]おつかれさま。\e
+
+＊OnElonaOmakeMMAEventHourPlayed
+\0\s[0]ゲーム開始から（Reference82）時間経過したわ。\w5
+\s[3]少し休憩したら？\e
+
+＊OnElonaOmakeMMAEventWish
+\0\s[2]願いよ！\w3 願い！\w5
+慎重に入力しなさいよ！\e
+
+＃────────
+＃さとりすと
+＃────────
+＊OnSatolistBoot
+\0\s[0]ん？\w3 書き物？\w5
+\s[5]頑張ってね。\e
+
+＊OnSatolistClosed
+\0\s[0]今日は終わり？\w5
+\s[5]頑張ったわね。お疲れさま。\e

@@ -145,12 +145,23 @@
 ＃http://iom.flavors.me
 
 ＊sakura.recommendsites
-うどん県旅ネット
-https://www.my-kagawa.jp/
+お～いお茶
+http://www.itoen.co.jp/oiocha/
+
 
 ＊sakura.recommendsites
-日本うどん学会
-http://udongakukai.sakura.ne.jp/
+DARS
+https://www.morinaga.co.jp/dars/
+
+
+＊sakura.recommendsites
+ラミー
+https://www.lotte.co.jp/products/brand/rummy_bacchus/
+
+
+＊sakura.recommendsites
+スコッティ
+https://scottie.crecia.jp/scottie/
 
 ＃────────
 ＃■ポータルサイト
