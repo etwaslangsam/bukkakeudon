@@ -166,15 +166,15 @@
 ＄（Reference4）見つめタイマ	1
 ＞（Reference4）にカーソルイン	（喋り間隔）!=０秒
 
-＊bustにカーソルイン
+＊bustにカーソルイン	（Status）!=talking
 \0\s[25]
-＊kittyにカーソルイン
+＊kittyにカーソルイン	（Status）!=talking
 \0\s[7]
 
 ＊OnMouseLeave
 ＄（Reference4）見つめタイマ	1
 
-＊OnMouseLeaveAll
+＊OnMouseLeaveAll	（Status）!=talking
 ＞怒り	（顔射済み）>0
 ＞恥じらい２	（全部脱いだ）==1
 ＞恥じらい	（キャミ脱いだ）==1
