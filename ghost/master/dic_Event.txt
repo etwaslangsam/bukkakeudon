@@ -93,7 +93,8 @@
 ＃────────
 ＃時間イベント
 ＃────────
-＊OnHourTimeSignal
+＊OnHourTimeSignal	（TI）
+\![set,trayballoon,--icon=info,--title=（現在時）時よ,--text=（彼女の名前）]
 ＞（現在時）時
 
 ＊０時

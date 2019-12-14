@@ -18,6 +18,7 @@
 ＄現在シェル	<censored>エルフ
 ＄自動アンカー	無効
 ＄VI	０
+＄TI	１
 ＠SAORI
 calc,saori/ssu.dll,calc
 calc_float,saori/ssu.dll,calc_float
