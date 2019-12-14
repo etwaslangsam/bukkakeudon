@@ -164,6 +164,12 @@
 
 ＊OnMouseEnter
 ＄（Reference4）見つめタイマ	1
+＞（Reference4）にカーソルイン	（喋り間隔）!=０秒
+
+＊bustにカーソルイン
+\0\s[25]
+＊kittyにカーソルイン
+\0\s[7]
 
 ＊OnMouseLeave
 ＄（Reference4）見つめタイマ	1
