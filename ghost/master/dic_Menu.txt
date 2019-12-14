@@ -28,12 +28,11 @@
 \0（OnSurfaceRestore）\cなあに？
 \_q
 \![*]\q[ぶっかけさせて,ぶっかけさせて]\n[half]
+\![*]\q[話を聞かせて,PleaseTalk]
 \![*]\q[話しかける,Communication]\n[half]
-\![*]\q[設定の変更,Setting]\n[half]
-
+\![*]\q[設定の変更,Setting]\n
 \q[なんでもない,Cancel]
-\_q
-\e
+\_q\e
 
 ＊Cancel
 ＞全裸Cancel	（全部脱いだ）
