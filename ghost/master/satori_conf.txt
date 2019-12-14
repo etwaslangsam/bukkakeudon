@@ -17,6 +17,7 @@
 ＄オナニーを見た	0
 ＄現在シェル	<censored>エルフ
 ＄自動アンカー	無効
+＄VI	０
 ＠SAORI
 calc,saori/ssu.dll,calc
 calc_float,saori/ssu.dll,calc_float
