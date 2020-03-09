@@ -93,21 +93,25 @@
 ＃────────
 ＃時間イベント
 ＃────────
-＊OnHourTimeSignal	（TI）
+＊OnHourTimeSignal
+＞時報	（TI）&&（Sender）==SSP
+＞（現在時）時
+
+＊時報
 \![set,trayballoon,--icon=info,--title=（現在時）時よ,--text=（彼女の名前）]
 ＞（現在時）時
 
 ＊０時
-\0\s[3]もうこんな時間・・・。\e
-
+\0\s[3]もうこんな時間……。\e
+＃────────
 ＊６時
 \0\s[0]もう朝ね。\w5
 そろそろ朝食にする？\e
-
+＃────────
 ＊１２時
 \0\s[0]お昼なんか作る？\w5
 それとも食べ行く？\e
-
+＃────────
 ＊１８時
 \0\s[0]夕食どうしよっか？\e
 
@@ -173,6 +177,9 @@
 
 ＊OnMouseLeave
 ＄（Reference4）見つめタイマ	1
+
+＊OnMouseEnterAll	（Status）!=talking
+\0\s[5]
 
 ＊OnMouseLeaveAll	（Status）!=talking
 ＞怒り	（顔射済み）>0
