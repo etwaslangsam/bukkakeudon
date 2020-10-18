@@ -380,7 +380,6 @@
 
 ＊tが押された
 ＞OnTalk（VI）
-＞（現在月）月	（乱数０～５）==３
 （）
 
 ＊mが押された
@@ -401,12 +400,10 @@
 ＊OnTalk
 ＞（Reference1）	（Reference0）
 ＞OnTalk（VI）
-＞（現在月）月	（乱数０～５）==３
 （）
 
 ＊OnTalk１
 ＄喋り間隔	（乱数３０～３００）秒
-＞（現在月）月	（乱数０～５）==３
 （）
 
 ＃────────
@@ -458,3 +455,53 @@
 ＊OnSatolistClosed
 \0\s[0]今日は終わり？\w5
 \s[5]頑張ったわね。お疲れさま。\e
+
+＃────────
+＃
+＃────────
+＊OnWebClap
+\![open,inputbox,拍手送信内容,,--limit=996]
+\0\e
+
+＊拍手送信内容を教えてもらった
+\0\_q（拍手送信内容）\_q
+\1（この内容で送信します）
+\_q
+\![*]\q[送信する,SendClap] \![*]\q[やめる,拍手送信内容が空打ちされた]
+\_q\e
+
+＊SendClap
+\![execute,http-post,http://clap.webclap.com/clap.php?id=teniwa,--param=message_body="うどん＠（拍手送信内容）",--async=webclap]
+＄拍手送信内容	
+
+＊簡易拍手1
+\![execute,http-post,http://clap.webclap.com/clap.php?id=teniwa,--param=message_body="うどん＠いいね！",--async=webclap]
+＄拍手送信内容	
+＊簡易拍手2
+\![execute,http-post,http://clap.webclap.com/clap.php?id=teniwa,--param=message_body="うどん＠好き",--async=webclap]
+＄拍手送信内容	
+＊簡易拍手3
+\![execute,http-post,http://clap.webclap.com/clap.php?id=teniwa,--param=message_body="うどん＠射精すぞ！",--async=webclap]
+＄拍手送信内容	
+
+＊拍手送信内容が空打ちされた
+＄拍手送信内容	
+\0φ（中断しますφ）\e
+
+＊OnExecuteHTTPComplete
+＞拍手送信完了	（Reference1）==webclap
+＊拍手送信完了
+＞（選択ラベル）が送信された
+\0（送信完了φ。ありがとうございますφ。）\e
+
+＊射精すぞ！が送信された
+\0\s[2]ちょっ、急にやめっ‥‥！\w9\n
+‥‥‥‥\s[9]あれ？\w5
+\s[30]アンタ一体なにだしたの‥‥？\e
+
+
+＊OnExecuteHTTPFailure
+＞拍手送信失敗	（Reference1）==webclap
+
+＊拍手送信失敗
+\0φ（（Reference4）φ）\e
