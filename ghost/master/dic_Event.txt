@@ -120,10 +120,10 @@
 \e
 
 ＃────────文字入力
-＊OnCommunicate
-≫「　（Reference1）	（compare,（Reference0）,user）
+＊OnCommunicate	（compare,（Reference0）,user）
+≫「　（Reference1）
 ＞名前を呼ぶ	（compare,（Reference1）,（彼女の名前））
-\0\s[3]え？\w3 ああ・・・\s[8]うん？\e
+\0\s[3]え？\w3 ああ‥‥\s[8]うん？\e
 
 ＊OnUserInput
 ＞（Reference0）を空打ちされた	（is_empty（バイト値,１）（Reference1））
@@ -178,7 +178,7 @@
 
 ＃────────表情初期化
 ＊OnSurfaceRestore
-\0（when、（胸カウント初期化タイマ）＞０、\s[29]、\s[（デフォルトサーフェス0）]）\e
+\0（when、（興奮度）＞０、\s[29]、\s[（デフォルトサーフェス0）]）\e
 
 
 ＃────────マウスイベント
@@ -421,14 +421,8 @@
 \![execute,http-post,http://clap.webclap.com/clap.php?id=teniwa,--param=message_body="うどん＠（拍手送信内容）",--async=webclap]
 ＄拍手送信内容	
 
-＊簡易拍手1
-\![execute,http-post,http://clap.webclap.com/clap.php?id=teniwa,--param=message_body="うどん＠いいね！",--async=webclap]
-＄拍手送信内容	
-＊簡易拍手2
-\![execute,http-post,http://clap.webclap.com/clap.php?id=teniwa,--param=message_body="うどん＠好き",--async=webclap]
-＄拍手送信内容	
-＊簡易拍手3
-\![execute,http-post,http://clap.webclap.com/clap.php?id=teniwa,--param=message_body="うどん＠射精すぞ！",--async=webclap]
+＊簡易拍手
+\![execute,http-post,http://clap.webclap.com/clap.php?id=teniwa,--param=message_body="うどん＠（選択ラベル）",--async=webclap]
 ＄拍手送信内容	
 
 ＊拍手送信内容が空打ちされた
