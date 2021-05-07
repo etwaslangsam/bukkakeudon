@@ -1,3 +1,4 @@
+＃────────システム的な部分↓
 ＊OnCacheRestore
 ＞OnSatoriLoad
 ＊OnSatoriLoad
@@ -34,9 +35,8 @@
 ＄ブラ脱いだ	
 ＄靴下脱いだ	
 ＄0前回トップス	
-
-
-＃────────シェル変更
+＃────────システム的な部分ここまで↑
+＃────────シェル変更↓
 ＊OnShellChanging
 ＞お色直し		（顔射済み）>0
 ＞大人に戻る	（現在シェル）==ミニうどん
@@ -83,6 +83,7 @@
 
 \s[30]はぁ。しょうがないわね。\w5
 \s[36]好きにしなさいよもう。\e
+＃────────シェル変更ここまで↑
 ＃────────着せ替え↓
 ＊OnDressupChanged
 （when、（Reference2）==1
@@ -394,33 +395,25 @@
 
 ＊OnWindowStateRestore
 ＄手動セーブ	実行
-＞最小化朝	（現在時）＜１１
 ＞最小化解除
 
 ＊最小化解除
 \0\s[0]ん、おまたせ。\e
 
-＊最小化朝
-\0\s[6]‥‥‥‥\s[2]ハッ！
-\s[29]ね、寝てないわよ？\e
-
-
+＊最小化解除	（現在時）＜１１
+\0\s[6]‥‥‥‥\s[2]ハッ！\n\s[29]ね、寝てないわよ？\e
 
 ＃────────サスペンド解除
 ＊OnSysResume
 \0\s[31]あら、おはよう。\w5
 \s[5]アンタの寝顔、見させてもらったわよ。\e
 
-
 ＃────────SSP更新
 ＊OnBasewareUpdating
-＄更新前バージョン	（Reference0）
 \0\s[0]SSPをアップデートするね。\w9
 
 ＊OnBasewareUpdated
-\0\s[0]SSPが（更新前バージョン）から（Reference0）になったって。
-＄更新前バージョン	
-\e
+\0\s[0]SSP（Reference0）になったって。\e
 
 ＃────────文字入力
 ＊OnCommunicate	（compare,（Reference0）,user）
@@ -436,7 +429,6 @@
 ＊OnUserInputCancel
 ＞（Reference0）をタイムアウト	（compare（バイト値,１）（Reference1）（バイト値,１）timeout）
 ＞（Reference0）を空打ちされた	（compare,（Reference1）,close）
-
 
 ＃────────時間イベント
 ＊OnHourTimeSignal
@@ -461,7 +453,6 @@
 \s[1]‥‥こうやって一緒に新年を迎えるのって、いいわね。\w5
 \s[39]来年も一緒に迎えようね。（ユーザ名）。\e
 
-
 ＃────────選択肢
 ＊OnChoiceSelect
 ＞（Reference0）
@@ -478,11 +469,9 @@
 \0\s[3]『（Reference0）』が見つからないみたい。
 作者に報告してみて。\e
 
-
 ＃────────表情初期化
 ＊OnSurfaceRestore
 \0（when、（興奮度）＞０、\s[29]、\s[（デフォルトサーフェス0）]）\e
-
 
 ＃────────マウスイベント
 ＊OnMouseClick
@@ -499,14 +488,11 @@
 ＊OnMouseClickEx
 ＞（Reference3）（Reference4）ころクリ	（Reference5）==middle
 
-＊OnMouseHover
-＞（Reference4）にカーソルイン	（喋り間隔）!=０秒&&（Status）!=talking
-
-＊bustにカーソルイン
-\0\s[25]
-＊kittyにカーソルイン
-\0\s[7]
-
+＊OnMouseHover	（喋り間隔）!=０秒&&（Status）!=talking
+\0（whenlist、（Reference4）==
+	、bust、\s[25]
+	、kitty、\s[7]
+）\e
 
 ＃────────インストール
 ＊OnInstallBegin
@@ -535,7 +521,6 @@
 \0\s[7]これ、『（replace（バイト値,１）（Reference0）（バイト値,１）\（バイト値,１）\\）』さんのじゃない。
 ちゃんと本人に渡してなさいよね。\e
 
-
 ＃────────ダウンロード
 ＊OnURLDropping
 \0\s[0]ダウンロードね。\e
@@ -550,7 +535,6 @@
 ＄なぐさめてほしい	1
 ＄なぐさめられなかったタイマ	１５
 \0\s[3]ダウンロードに失敗したわ。\e
-
 
 ＃────────ファイル作成
 ＊OnUpdatedataCreating
@@ -573,7 +557,6 @@
 （Reference1）
 \_q
 \e
-
 
 ＃────────ネットワーク更新
 ＊OnUpdateBegin
@@ -618,18 +601,15 @@
 \0\s[22]ってあれ？\w6
 失敗したみたい‥‥‥‥繋がらない？\e
 
-
 ＃────────カレンダーイベント
 ＊OnSchedule5MinutesToGo
 \0\s[2]あっ、ほら！
 『（Reference1）』五分前よ？\w3
 \s[0]ちゃんと準備できてる？\e
 
-
 ＃────────ネットワーク状態
 ＊OnNetworkHeavy
 \0\s[4]サーバが応答しないみたい・・・。\e
-
 
 ＃────────キー押下
 ＊OnKeyPress
@@ -652,14 +632,11 @@
 \0\s[3]写真？\w5
 \s[0]まあ、いいけど‥‥\s[5]へへへ\_u[0x266A]\e
 
-
-＃────────トークト
+＃────────トーク
 ＊OnTalk
 ＞（Reference1）	（Reference0）
-＞胸カウント初期化	（胸カウント）＞９
 ＞（現在月）月	（乱数１～４）==２
 （）
-
 
 ＃────────外部アプリ汎用イベント
 ＊OnApplicationBoot
@@ -697,16 +674,12 @@
 \0\s[2]願いよ！\w3 願い！\w5
 慎重に入力しなさいよ！\e
 
-
 ＃────────さとりすと
 ＊OnSatolistBoot
-\0\s[0]ん？\w3 書き物？\w5
-\s[5]頑張ってね。\e
+\0\s[0]ん？\w3 書き物？\w5 \s[5]頑張ってね。\e
 
 ＊OnSatolistClosed
-\0\s[0]今日は終わり？\w5
-\s[5]頑張ったわね。お疲れさま。\e
-
+\0\s[0]今日は終わり？\w5 \s[5]頑張ったわね。お疲れさま。\e
 
 ＃────────
 ＊OnWebClap
