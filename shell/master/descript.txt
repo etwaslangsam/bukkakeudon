@@ -3,7 +3,7 @@ type,shell
 craftman,totetiteta
 craftmanw,‚¿‚Ä‚½
 id,censored_elf
-name,<censored>ƒGƒ‹ƒt
+name,master
 homeurl,http://kuragegondora.pa.land.to
 seriko.use_self_alpha,1
 
