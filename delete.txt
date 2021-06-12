@@ -9,3 +9,4 @@ ghost\master\CommuList.txt
 ghost\master\dic_Menu.txt
 ghost\master\dic_Talk2.txt
 ghost\master\dic_Kisekae.txt
+ghost\master\dic_Event.txt
