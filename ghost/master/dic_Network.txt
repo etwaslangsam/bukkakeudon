@@ -1,0 +1,23 @@
+＃────────ネットワーク更新
+＊OnUpdateBegin
+\0\s[0]更新情報を取得するわ。\w9
+
+＊OnUpdateReady
+\0\s[5]（Reference0）個のファイルが更新されるみたい。
+（when,（Reference0）>5,\s[9]結構あるわね。）\e
+
+＊OnUpdateComplete
+＄ほめてほしい	1
+＄ほめられなかったタイマ	１５
+\0（when,（Reference0）==none,\s[36]残念。とくに更新されてないみたいね,\s[5]ネットワーク更新、無事終了したわよ）。\e
+
+＊OnUpdateFailure
+＄なぐさめてほしい	1
+＄なぐさめられなかったタイマ	１５
+\0（whenlist,（Reference0）==
+	,timeout,\s[36]時間切れ。重すぎてファイルが落ちてこないみたい。
+	,md5 miss,\s[4]データが一致しなかったわ。\n回線状態が悪いのか、updates2.dauがおかしいのかも。
+	,404,\s[9]更新用ファイルが見つからなかったわ。
+	,artificial,\s[30]中断するわよ？
+	,\s[3]「（Reference0）」で失敗したわ。
+）\e

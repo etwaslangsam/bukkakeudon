@@ -1,0 +1,364 @@
+＃────────システム的な部分↓
+＊OnCacheRestore
+＞OnSatoriLoad
+＊OnSatoriLoad
+＄文「＊」の重複回避	有効、起動中
+＄単語群「＊」の重複回避	直前、起動中
+＄単語群「ぶっかけ目標」の重複回避	有効、起動中
+＄単語群「ぶっかけ台詞」の重複回避	有効、トーク中
+＄着せ替え抑制	
+
+＊FlagReset
+（set,全タイマ解除,実行）
+（set,顔射済み,）（set,興奮度,）（set,デフォルトサーフェス1,）（set,パイズリしてる,）（set,フェラしてる,）
+（set,頭なでカウント,）（set,胸カウント,）（set,ほめてほしい,）（set,なぐさめてほしい,）（set,脚なでカウンタ,）（set,耳なで回数,）（set,ぷっしー弄り回数,）
+（set,現在トップス,）（set,ズボン脱いだ,）（set,キャミ脱いだ,）（set,全部脱いだ,）（set,パンツ脱いだ,）（set,ブラ脱いだ,）（set,靴下脱いだ,）（set,0前回トップス,）
+
+＃────────シェル変更↓
+＊OnShellChanging
+＞お色直し		（顔射済み）>0
+（whenlist，（現在シェル）==
+	，ミニうどん，\0\s[3]やっと元に戻れる‥‥。\e
+	，\0\s[5]ちょっと目を瞑っててくれる？\w9\n\n\s[2]‥‥え？\w5 \s[20]どうせなら生着替えしてくれって？\w3 \s[28]バカ！\w5
+）
+
+＊お色直し
+＄顔射済み	0
+＄デフォルトサーフェス0	0
+\0\s[3]アンタねぇ‥‥‥‥\w5さんざん好き勝手しといて。\w5\n
+\s[8]ま、いいわ。ついでに顔洗ってくるからちょっと待ってなさい。\s[-1]
+\![bind,液,,0]\_w[1000]
+
+＊OnShellChanged
+（set,現在シェル,（Reference0））
+（whenlist，（Reference0）==
+	，ダークエルフ，\0\s[57]ふふん。\w5 こんだけ大きければ文句ないでしょ？\e
+	，つるつるしこしこ，\0\s[5]ね、いろいろ服出したからさ、アンタがコーディネートしてよ。\e
+	，ミニうどん，（when、（初ロリ化）==0、\![raise,ミニうどん初回]、\0\s[34]またコレか‥‥‥‥。\e）
+	，\0\s[32]どう？\w5 マンネリ解消になったかしら？\e
+）\![raise,イベント後の処理]
+
+＊ミニうどん初回
+＄初ロリ化	１
+\0\s[2]なんじゃこりゃー！\w5
+
+え？\w3待ってどういうこと！？
+体が小さくなったんだけど？！\_w[1000]
+\s[9]\c‥‥‥‥心配しなくてもちゃんと元に戻るって？\w5
+\s[4]なんでそんなこと分かるのよ。\w5
+
+\s[2]ってことはやっぱアンタの仕業か！\_w[1000]
+
+\s[30]はぁ。しょうがないわね。\w5
+\s[36]好きにしなさいよもう。\e
+
+
+
+＃────────最小化解除
+＊OnWindowStateMinimize
+＄手動セーブ	実行
+
+＊OnWindowStateRestore
+＄手動セーブ	実行
+（最小化解除）
+
+＠最小化解除
+\0\s[0]ん、おまたせ。\e
+\0\s[6]‥‥\w5ふう。\e
+\0\s[20]‥‥‥‥。\e
+
+＠最小化解除	（現在時）＜１１
+\0\s[6]‥‥‥‥\s[2]ハッ！\n\s[29]ね、寝てないわよ？\e
+
+＃────────サスペンド解除
+＊OnSysResume
+\0\s[31]あら、おはよう。\w5
+\s[5]アンタの寝顔、見させてもらったわよ。\e
+
+＃────────SSP更新
+＊OnBasewareUpdating
+\0\s[0]SSPをアップデートするね。\w9
+
+＊OnBasewareUpdated
+\0\s[0]SSP（Reference0）になったって。\e
+
+＃────────文字入力
+＊OnCommunicate	（compare,（Reference0）,user）
+≫「　（Reference1）
+＞名前を呼ぶ	（compare,（Reference1）,（彼女の名前））
+\0\s[3]え？\w3 ああ‥‥\s[8]うん？\e
+
+＊OnUserInput
+＞（Reference0）を空打ちされた	（is_empty（バイト値,１）（Reference1））
+＄（Reference0）	（Reference1）
+＞（Reference0）を教えてもらった
+
+＊OnUserInputCancel
+＞（Reference0）をタイムアウト	（compare（バイト値,１）（Reference1）（バイト値,１）timeout）
+＞（Reference0）を空打ちされた	（compare,（Reference1）,close）
+
+＃────────時間イベント
+＊OnHourTimeSignal
+＞（現在月）月（現在日）日になった	（現在時）==０
+＞時報	（現在分）＜６&&（TI）
+
+＊時報
+\0\s[0]（現在時）時よ。\w9
+＞（現在時）時
+
+＊０時
+\0\s[3]まだ眠らないの？\e
+
+＊７時
+\0\s[0]朝食はもう食べた？\e
+
+＊１２時
+\0\s[5]今日のお昼は何にしよっか？\e
+
+＊１５時
+\0\s[5]へへへ、おやつおやつ～\_u[0x266A]\e
+
+＊１８時
+\0\s[0]夕食どうしよっか？\e
+
+
+＊１月１日になった
+（set,イベント年月日,（現在年）年（現在月）月（現在日）日）（set,新年の挨拶,１）
+\0\s[0]ん‥‥、年が明けたわね。\w5
+\s[5]あけましておめでとう。\s[32]今年もよろしくね？\w9\n
+\s[1]‥‥こうやって一緒に新年を迎えるのって、いいわね。\w5
+\s[39]来年も一緒に迎えようね。（ユーザ名）。\e
+
+＃────────選択肢
+＊OnChoiceSelect
+＞（Reference0）
+＞選択先がない
+
+＊OnChoiceTimeout
+\0\s[7]ちょっと聞いてる？\e
+
+＊OnAnchorSelect
+＞（Reference0）
+＞選択先がない
+
+＊選択先がない
+\0\s[3]『（Reference0）』が見つからないみたい。\w5作者に報告してみて。\e
+
+＃────────表情初期化
+＊OnSurfaceRestore
+\0（when、（興奮度）＞０、\s[29]、\s[（デフォルトサーフェス0）]）\e
+
+＃────────マウスイベント
+＊OnMouseDoubleClick
+＞（Reference3）（Reference4）つつかれ	（Reference5）==0
+
+＊OnMouseWheel
+＞（Reference3）（Reference4）ころころ上	（Reference2）＞0
+＞（Reference3）（Reference4）ころころ下	（Reference2）＜0
+＞（Reference3）（Reference4）ころころ
+
+＊OnMouseClickEx
+＞（Reference3）（Reference4）ころクリ	（Reference5）==middle
+
+＊OnMouseHover	（喋り間隔）!=０秒&&（Status）!=talking
+\0（whenlist，（Reference4）==，bust，\s[25]，kitty，\s[7]）\e
+
+＃────────インストール
+＊OnInstallBegin
+\0\s[0]インストールね。\w5
+任せておきなさい。\w9
+
+＊OnInstallComplete
+＞（Reference0）をインストール
+＄ほめてほしい	1
+＄ほめられなかったタイマ	１５
+\0\s[0]『（replace（バイト値,１）（Reference1）（バイト値,１）\（バイト値,１）\\）』をインストールしたわ。\w5
+（Reference0）ね。\e
+
+＊ghostをインストール
+\0\s[0]『（replace（バイト値,１）（Reference1）（バイト値,１）\（バイト値,１）\\）』をインストールしたわ。\w5
+\s[24]って誰よコレ？\w3 浮気？\e
+
+
+＊OnInstallFailure
+＄なぐさめてほしい	1
+＄なぐさめられなかったタイマ	１５
+\0\s[9]インストールに失敗したみたい。\w5
+原因は『（Reference0）』だって。\e
+
+＊OnInstallRefuse
+\0\s[7]これ、『（replace（バイト値,１）（Reference0）（バイト値,１）\（バイト値,１）\\）』さんのじゃない。
+ちゃんと本人に渡してなさいよね。\e
+
+＃────────ダウンロード
+＊OnURLDropping
+\0\s[0]ダウンロードね。\e
+
+＊OnURLDropped
+＄ほめてほしい	1
+＄ほめられなかったタイマ	１５
+\0\s[31]ダウンロード終わり。
+\_q（Reference0）\_qに置いといたわ。\e
+
+＊OnURLDropFailure
+＄なぐさめてほしい	1
+＄なぐさめられなかったタイマ	１５
+\0\s[3]ダウンロードに失敗したわ。\e
+
+＃────────ファイル作成
+＊OnUpdatedataCreating
+\0\s[0]更新ファイルの作成、っと。\e
+
+＊OnUpdatedataCreated
+＄ほめてほしい	1
+＄ほめられなかったタイマ	１５
+\0\s[0]はい出来た。\w5
+更新するの？\w3 \s[5]偉いじゃない。\e
+
+＊OnNarCreating
+\0\s[0]narファイルの作成ね。\e
+
+＊OnNarCreated
+＄ほめてほしい	1
+＄ほめられなかったタイマ	１５
+\0\s[5]出来たよ。
+\_q
+（Reference1）
+\_q
+\e
+
+
+＃────────時計合わせ
+＊OnSNTPBegin
+\0\s[3]時計合わせ？\w6
+\s[4]それくらい自分でやりなさいよ、もー。\w9
+
+＊OnSNTPCompare
+\0（when,（Reference3）==0,\s[4]って、なによ。ちゃんと合ってるじゃない。,\6）\e
+
+＊OnSNTPCorrect
+＄ほめてほしい	1
+＄ほめられなかったタイマ	１５
+\0\s[31]はい、合わせておいたわよ。\e
+
+＊OnSNTPFailure
+＄なぐさめてほしい	1
+＄なぐさめられなかったタイマ	１５
+\0\s[22]ってあれ？\w6
+失敗したみたい‥‥‥‥繋がらない？\e
+
+＃────────カレンダーイベント
+＊OnSchedule5MinutesToGo
+\0\s[2]あっ、ほら！
+『（Reference1）』五分前よ？\w3
+\s[0]ちゃんと準備できてる？\e
+
+＃────────ネットワーク状態
+＊OnNetworkHeavy
+\0\s[4]サーバが応答しないみたい・・・。\e
+
+＃────────キー押下
+＊OnKeyPress
+＞（Reference0）が押された
+
+＊tが押された
+（）
+
+＊mが押された
+（whenlist，（顔射済み）＞，3，\![raise,最後メニュー]，0，\![raise,途中メニュー]，\![raise,メニュー]）
+
+＊cが押された
+\![raise,Communication]
+
+＊pが押された
+\0\s[3]写真？\w5
+\s[0]まあ、いいけど‥‥\s[5]へへへ\_u[0x266A]\e
+
+＊xが押された
+＄着せ替え抑制	
+\0\_q※着せ替え反応修復スイッチ\_q\e
+
+＃────────トーク
+＊OnTalk
+＞（Reference1）	（Reference0）
+（）
+
+＃────────外部アプリ汎用イベント
+＊OnApplicationBoot
+\0\s[0]『（Reference0）』を起動したわよ。\e
+
+＊OnApplicationClose
+\0\s[0]『（Reference0）』が終了したみたいね。\e
+
+＊OnApplicationExist
+\0\s[3]『（Reference0）』？\e
+
+＊OnApplicationVersion
+\0\s[0]（Reference0） - （Reference2）
+（Reference3）
+（Reference4）
+（Reference1）\e
+
+＊OnWebsiteUpdateNotify
+\0\s[0]『（Reference0）』が更新されたみたい。\e
+
+
+＃────────Elona omake_MMA
+＊OnElonaOmakeMMAEventGameLoad
+\0\s[0]\_q（Reference1）年 （Reference2）月（Reference3）日\_q\n
+おかえり、『（Reference22）』（Reference21）。\e
+
+＊OnElonaOmakeMMAEventGameQuit
+\0\s[5]おつかれさま。\e
+
+＊OnElonaOmakeMMAEventHourPlayed
+\0\s[0]ゲーム開始から（Reference82）時間経過したわ。\w5
+\s[3]少し休憩したら？\e
+
+＊OnElonaOmakeMMAEventWish
+\0\s[2]願いよ！\w3 願い！\w5
+慎重に入力しなさいよ！\e
+
+＃────────さとりすと
+＊OnSatolistBoot
+\0\s[0]ん？\w3 書き物？\w5 \s[5]頑張ってね。\e
+
+＊OnSatolistClosed
+\0\s[0]今日は終わり？\w5 \s[5]頑張ったわね。お疲れさま。\e
+
+＃────────
+＊OnWebClap
+\![open,inputbox,拍手送信内容,,--limit=996]
+\0\e
+
+＊拍手送信内容を教えてもらった
+\0\_q\_?（拍手送信内容）\_?\_q
+\1（この内容で送信します）
+\_q
+\![*]\q[送信する,SendClap] \![*]\q[やめる,拍手送信内容が空打ちされた]
+\_q\e
+
+＊SendClap
+\![execute,http-post,http://clap.webclap.com/clap.php?id=teniwa,--param=message_body="うどん＠（拍手送信内容）",--async=webclap]
+＄拍手送信内容	
+
+＊簡易拍手
+\![execute,http-post,http://clap.webclap.com/clap.php?id=teniwa,--param=message_body="うどん＠（選択ラベル）",--async=webclap]
+＄拍手送信内容	
+
+＊拍手送信内容が空打ちされた
+＄拍手送信内容	
+\0φ（中断しますφ）\e
+
+＊OnExecuteHTTPComplete	（Reference1）==webclap
+＞（選択ラベル）が送信された
+\0（送信完了φ。ありがとうございますφ。）\e
+
+＊射精すぞ！が送信された
+\0\s[2]ちょっ、急にやめっ‥‥！\w9\n
+‥‥‥‥\s[9]あれ？\w5
+\s[30]アンタ一体なにだしたの‥‥？\e
+
+
+＊OnExecuteHTTPFailure	（Reference1）==webclap
+\0φ（（Reference4）φ）\e
