@@ -1,6 +1,7 @@
 ＃────────着せ替え↓
 ＊OnDressupChanged
-（set,（Reference0）（Reference3）,（Reference1））（set,手動セーブ,実行）
+（when，（Reference2）==1，（set,（Reference0）（Reference3）,（Reference1）），（set,（Reference0）（Reference3）,））
+（set,手動セーブ,実行）
 ＞牛セット装備	（count，（Reference1），牛）&&（牛柄セット判定）==7
 ＞（Reference3）_（Reference2）	（count，（Status），talking）==0
 ＞（Reference1）_（Reference2）	（count，（Status），talking）==0
@@ -215,7 +216,7 @@
 \0\s[28]は、はみ出そう‥‥。\e
 
 ＊なし_1
-＄デフォルトサーフェス0	58
+（when，（変数「0インナー」の存在）==0，（set,デフォルトサーフェス0,58））
 ＞全裸になった	（全裸判定）==0
 ＞ノーパンになった		（変数「0ボトムス」の存在）==1
 ＞脱パンツ		（変数「0インナーの存在」）==0
