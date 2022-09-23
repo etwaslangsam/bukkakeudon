@@ -180,8 +180,13 @@
 ＊OnMouseClickEx
 ＞（Reference3）（Reference4）ころクリ	（Reference5）==middle
 
-＊OnMouseHover	（喋り間隔）!=０秒&&（count，（Status），talking）==0
-\0（whenlist，（Reference4）==，bust，\s[25]，kitty，\s[7]）\e
+＊OnMouseHover
+＞look_（Reference3）（Reference4）	（count，（Status），talking）==0
+
+＊look_0bust
+\0\s[25]\e
+＊look_0kitty
+\0\s[7]\e
 
 ＃────────インストール
 ＊OnInstallBegin
@@ -285,7 +290,9 @@
 （）
 
 ＊mが押された
-（whenlist，（顔射済み）＞，3，\![raise,最後メニュー]，0，\![raise,途中メニュー]，\![raise,メニュー]）
+＞最後メニュー	（顔射済み）＞3
+＞途中メニュー	（顔射済み）＞0
+＞メニュー
 
 ＊cが押された
 \![raise,Communication]
