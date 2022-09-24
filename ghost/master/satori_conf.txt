@@ -20,6 +20,7 @@
 ＄頭なでカウント	０
 ＄胸カウント	０
 ＄興奮度	０
+＄絶頂した	０
 ＠SAORI
 calc,saori/ssu.dll,calc
 calc_float,saori/ssu.dll,calc_float
