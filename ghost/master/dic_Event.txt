@@ -7,6 +7,7 @@
 ＄単語群「ぶっかけ目標」の重複回避	有効、起動中
 ＄単語群「ぶっかけ台詞」の重複回避	有効、トーク中
 ＄着せ替え抑制	
+＄なでられ反応回数	５５
 
 ＊OnSatoriUnload
 ＄耳なで回数	
@@ -176,6 +177,7 @@
 
 ＃────────マウスイベント
 ＊OnMouseDoubleClick
+＄頭なでカウント初期化タイマ	
 ＞（Reference3）（Reference4）つつかれ	（Reference5）==0
 
 ＊OnMouseWheel
