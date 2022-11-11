@@ -43,7 +43,7 @@
 ＊OnShellChanged
 ＄現在シェル	（Reference0）
 ＞（Reference0）_Changed
-，\0\s[32]どう？\w5 マンネリ解消になったかしら？\e
+\0\s[32]どう？\w5 マンネリ解消になったかしら？\e
 
 ＊ダークエルフ_Changed
 \0\s[57]ふふん。\w5 こんだけ大きければ文句ないでしょ？\e
