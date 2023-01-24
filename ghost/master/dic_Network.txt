@@ -4,20 +4,81 @@
 
 ＊OnUpdateReady
 \0\s[5]（Reference0）個のファイルが更新されるみたい。
-（when,（Reference0）>5,\s[9]結構あるわね。）\e
+（when,（Reference0）＞5,\s[9]結構あるわね。）\e
+
 
 ＊OnUpdateComplete
 ＄ほめてほしい	1
 ＄ほめられなかったタイマ	１５
-\0（when,（Reference0）==none,\s[36]残念。とくに更新されてないみたいね,\s[5]ネットワーク更新、無事終了したわよ）。\e
+＞ネットワーク更新（Reference0）
+
+＊ネットワーク更新none
+\0\s[36]残念。とくに更新されてないみたいね。\e
+
+＊ネットワーク更新changed
+\0\s[5]ネットワーク更新、無事終了したわよ。\e
+
 
 ＊OnUpdateFailure
 ＄なぐさめてほしい	1
 ＄なぐさめられなかったタイマ	１５
-\0（whenlist,（Reference0）==
-	,timeout,\s[36]時間切れ。重すぎてファイルが落ちてこないみたい。
-	,md5 miss,\s[4]データが一致しなかったわ。\n回線状態が悪いのか、updates2.dauがおかしいのかも。
-	,404,\s[9]更新用ファイルが見つからなかったわ。
-	,artificial,\s[30]中断するわよ？
-	,\s[3]「（Reference0）」で失敗したわ。
-）\e
+\0\s[3]「（Reference0）」で失敗したわ。\e
+
+＊ネットワーク更新timeout
+\0\s[36]時間切れ。重すぎてファイルが落ちてこないみたい。\e
+
+＊ネットワーク更新md5 miss
+\0\s[4]データが一致しなかったわ。
+回線状態が悪いのか、updates2.dauがおかしいのかも。\e
+
+＊ネットワーク更新404
+\0\s[9]更新用ファイルが見つからなかったわ。\e
+
+＊ネットワーク更新artificial
+\0\s[30]中断するわよ？
+
+
+＃────────
+＠WCM_URL
+https://script.google.com/macros/s/AKfycbxHT6cacuEsMdGulS0c_a29X1pjDu5CUC3BPqAd9_wwskSn9l1oAAaN216XusA9siAX/exec
+＠送信元
+うどん
+
+＊OnWebClap
+\![open,inputbox,送信内容,,--limit=800]
+\0\e
+
+＊送信内容を教えてもらった
+＄送信内容	（Reference1）
+＄メモ	手動
+\0\_q\_?（送信内容）\_?\_q
+\1（この内容で送信します）
+\_q
+\![*]\q[送信する,SendClap] \![*]\q[やめる,拍手送信内容が空打ちされた]
+\_q\e
+
+＊SendClap
+\![execute,http-post,（WCM_URL）,--param=message_body="（送信元）;（送信内容）;（メモ）",--async=webclap,--timeout=5]
+＄送信内容	
+
+＊簡易拍手
+＄メモ	定型
+\![execute,http-post,（WCM_URL）,--param=message_body="（送信元）;（選択ラベル）;（メモ）",--async=webclap]
+＄送信内容	
+
+＊拍手送信内容が空打ちされた
+＄送信内容	
+\0φ（中断しますφ）\e
+
+＊OnExecuteHTTPComplete	（Reference1）==webclap
+＞（選択ラベル）が送信された
+\0（送信完了φ。ありがとうございますφ。）\e
+
+＊射精すぞ！が送信された
+\0\s[2]ちょっ、急にやめっ‥‥！\w9\n
+‥‥‥‥\s[9]あれ？\w5
+\s[30]アンタ一体なにだしたの‥‥？\e
+
+
+＊OnExecuteHTTPFailure	（Reference1）==webclap
+\0φ（（Reference4）φ）\e
