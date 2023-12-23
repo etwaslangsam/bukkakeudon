@@ -3,3 +3,4 @@
 ghost\master\ssp_shiori_log.txt
 thumbnail.png
 ghost\master\CommuList.txt
+ghost\master\dic_Change.txt

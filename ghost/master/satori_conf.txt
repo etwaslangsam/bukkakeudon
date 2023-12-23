@@ -21,6 +21,9 @@
 ＄胸カウント	０
 ＄興奮度	０
 ＄絶頂した	０
+＄ユ誕生月	4
+＄ユ誕生日	1
+＄タイマ変数はセーブしない	有効
 ＠SAORI
 calc,saori/ssu.dll,calc
 calc_float,saori/ssu.dll,calc_float
