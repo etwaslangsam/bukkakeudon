@@ -1,7 +1,7 @@
 
 ＊SeasonEvent
 \![leave,passivemode]
-\0\b[2]\c\_q\q[←,メニュー] \q[×,Cancel]\n
+\0\c\_q\q[←,メニュー] \q[×,Cancel]\n
  \![*]\q[新年の挨拶,イベント_新年の挨拶]
  \![*]\q[バレンタイン,VD_1]
  \![*]\q[一日遅れのバレンタイン,afVD_1]
