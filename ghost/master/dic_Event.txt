@@ -314,46 +314,46 @@
 （）
 
 ＃────────外部アプリ汎用イベント
-＊OnApplicationBoot
+＊OnApplicationBoot	（起動直後タイマ）==０
 \0\s[0]『（Reference0）』を起動したわよ。\e
 
-＊OnApplicationClose
+＊OnApplicationClose	（起動直後タイマ）==０
 \0\s[0]『（Reference0）』が終了したみたいね。\e
 
-＊OnApplicationExist
+＊OnApplicationExist	（起動直後タイマ）==０
 \0\s[3]『（Reference0）』？\e
 
-＊OnApplicationVersion
+＊OnApplicationVersion	（起動直後タイマ）==０
 \0\s[0]（Reference0） - （Reference2）
 （Reference3）
 （Reference4）
 （Reference1）\e
 
-＊OnWebsiteUpdateNotify
+＊OnWebsiteUpdateNotify	（起動直後タイマ）==０
 \0\s[0]『（Reference0）』が更新されたみたい。\e
 
 
 ＃────────Elona omake_MMA
-＊OnElonaOmakeMMAEventGameLoad
+＊OnElonaOmakeMMAEventGameLoad	（起動直後タイマ）==０
 \0\s[0]\_q（Reference1）年 （Reference2）月（Reference3）日\_q\n
 おかえり、『（Reference22）』（Reference21）。\e
 
-＊OnElonaOmakeMMAEventGameQuit
+＊OnElonaOmakeMMAEventGameQuit	（起動直後タイマ）==０
 \0\s[5]おつかれさま。\e
 
-＊OnElonaOmakeMMAEventHourPlayed
+＊OnElonaOmakeMMAEventHourPlayed	（起動直後タイマ）==０
 \0\s[0]ゲーム開始から（Reference82）時間経過したわ。\w5
 \s[3]少し休憩したら？\e
 
-＊OnElonaOmakeMMAEventWish
+＊OnElonaOmakeMMAEventWish	（起動直後タイマ）==０
 \0\s[2]願いよ！\w3 願い！\w5
 慎重に入力しなさいよ！\e
 
 ＃────────さとりすと
-＊OnSatolistBoot
+＊OnSatolistBoot	（起動直後タイマ）==０
 \0\s[0]ん？\w3 書き物？\w5 \s[5]頑張ってね。\e
 
-＊OnSatolistClosed
+＊OnSatolistClosed	（起動直後タイマ）==０
 \0\s[0]今日は終わり？\w5 \s[5]頑張ったわね。お疲れさま。\e
 
 
