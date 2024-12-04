@@ -306,6 +306,9 @@
 \0\s[3]写真？\w5
 \s[0]まあ、いいけど‥‥\s[5]へへへ\_u[0x266A]\e
 
+＊zが押された
+\0トーク数 （countNoNameTalk）\e
+
 ＃────────トーク
 ＊OnTalk
 ＞（Reference1）	（Reference0）
